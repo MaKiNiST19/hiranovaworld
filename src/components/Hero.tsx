@@ -306,7 +306,7 @@ const Hero: React.FC = () => {
           </video>
           <div className="hero-overlay"></div>
         </div>
-      <div className="hero-content"></div>
+      <div className="hero-content">
         <div id="hero-logo" className="hero-logo">
           <img src="/beyaz-logo.png" alt="HiraNova" />
         </div>

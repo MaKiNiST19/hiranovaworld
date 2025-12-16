@@ -31,6 +31,13 @@ yarn-error.log*
 # OS
 Thumbs.db
 
+# Large files
+*.exe
+*.pdf
+*.mp4
+Antigravity.exe
+herovid.mp4
+
 
 
 

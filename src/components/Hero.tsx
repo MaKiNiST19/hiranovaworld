@@ -306,22 +306,22 @@ const Hero: React.FC = () => {
           </video>
           <div className="hero-overlay"></div>
         </div>
-      <div className="hero-content">
-        <div id="hero-logo" className="hero-logo">
-          <img src="/beyaz-logo.png" alt="HiraNova" />
+        <div className="hero-content">
+          <div id="hero-logo" className="hero-logo">
+            <img src="/beyaz-logo.png" alt="HiraNova" />
+          </div>
+          <div id="hero-story" className="hero-story">
+            <p>HiraNova, doğanın kalbinde yaşamın en saf halini sunuyor. Yağmurla beslenen, güneşle aydınlanan bir dünya... Burada modern konfor ile doğal yaşam bir araya geliyor.</p>
+          </div>
+          <div id="hero-cta" className="hero-cta">
+            <h2>HiraNova ile Tanışmaya Hazır mısın?</h2>
+          </div>
+          <div className="hero-scroll-indicator">
+            <span>Keşfet</span>
+            <div className="scroll-arrow">↓</div>
+          </div>
         </div>
-        <div id="hero-story" className="hero-story">
-          <p>HiraNova, doğanın kalbinde yaşamın en saf halini sunuyor. Yağmurla beslenen, güneşle aydınlanan bir dünya... Burada modern konfor ile doğal yaşam bir araya geliyor.</p>
-        </div>
-        <div id="hero-cta" className="hero-cta">
-          <h2>HiraNova ile Tanışmaya Hazır mısın?</h2>
-        </div>
-        <div className="hero-scroll-indicator">
-          <span>Keşfet</span>
-          <div className="scroll-arrow">↓</div>
-        </div>
-      </div>
-    </section>
+      </section>
       <div ref={wrapperRef} className="hero-wrapper-internal"></div>
     </div>
   )

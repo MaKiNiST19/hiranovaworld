@@ -302,7 +302,7 @@ const Hero: React.FC = () => {
             playsInline
             crossOrigin="anonymous"
           >
-            <source src="/hero-vid.mp4" type="video/mp4" />
+            <source src="/herovid.mp4" type="video/mp4" />
           </video>
           <div className="hero-overlay"></div>
         </div>

@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react'
+import { useState, useEffect, useImperativeHandle, forwardRef } from 'react'
 import './MegaMenu.css'
 
 export interface MegaMenuRef {
   close: () => void
 }
 
-const MegaMenu = forwardRef<MegaMenuRef>((props, ref) => {
+const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
 

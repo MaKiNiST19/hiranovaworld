@@ -22,7 +22,6 @@ interface MapPin {
 
 const Map: React.FC = () => {
   const [selectedPin, setSelectedPin] = useState<MapPin | null>(null)
-  const [imageHeight, setImageHeight] = useState<number>(0)
   const [routePath, setRoutePath] = useState<string>('')
   const [routeAnimation, setRouteAnimation] = useState<number>(0)
   const [routeLength, setRouteLength] = useState<number>(0)
@@ -311,7 +310,6 @@ const Map: React.FC = () => {
         // Biraz padding ekleyerek kesilmesini önle
         sectionRef.current.style.height = `${imageHeight}px`
         sectionRef.current.style.minHeight = `${imageHeight}px`
-        setImageHeight(imageHeight)
       }
     }
 

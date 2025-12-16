@@ -1,0 +1,285 @@
+.gallery-section {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.gallery-container {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  height: 80vh;
+  min-height: 600px;
+}
+
+.gallery-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gallery-slide {
+  position: absolute;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity, filter;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Önceki görsel - Sol %5 - Blurlu */
+.gallery-slide-prev {
+  left: 0;
+  width: 5%;
+  z-index: 1;
+  cursor: pointer;
+  filter: blur(8px);
+  opacity: 0.6;
+  transform: translateX(0);
+}
+
+.gallery-slide-prev:hover {
+  opacity: 0.8;
+  transform: translateX(5px);
+}
+
+/* Ana görsel - Orta %90 */
+.gallery-slide-main {
+  left: 5%;
+  width: 90%;
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: translateX(0);
+}
+
+.gallery-slide-main.transitioning {
+  animation: slideInMain 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-slide-main img {
+  animation: fadeInScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideInMain {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.98);
+}
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+}
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Sonraki görsel - Sağ %5 - Blurlu */
+.gallery-slide-next {
+  right: 0;
+  width: 5%;
+  z-index: 1;
+  cursor: pointer;
+  filter: blur(8px);
+  opacity: 0.6;
+  transform: translateX(0);
+}
+
+.gallery-slide-next:hover {
+  opacity: 0.8;
+  transform: translateX(-5px);
+}
+
+/* Navigasyon butonları */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-nav:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-nav-prev {
+  left: 2rem;
+}
+
+.gallery-nav-next {
+  right: 2rem;
+}
+
+/* Thumbnail navigasyon */
+.gallery-thumbnails {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.gallery-thumbnails::-webkit-scrollbar {
+  height: 4px;
+}
+
+.gallery-thumbnails::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gallery-thumbnails::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+.gallery-thumbnail {
+  width: 60px;
+  height: 60px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.gallery-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-thumbnail:hover {
+  border-color: var(--green-primary);
+  transform: scale(1.1);
+}
+
+.gallery-thumbnail.active {
+  border-color: var(--green-primary);
+  border-width: 3px;
+  box-shadow: 0 0 0 2px rgba(61, 139, 76, 0.3);
+}
+
+@media (max-width: 1024px) {
+  .gallery-container {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-nav-prev {
+    left: 1rem;
+  }
+
+  .gallery-nav-next {
+    right: 1rem;
+  }
+
+  .gallery-thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 2rem 0;
+  }
+
+  .gallery-container {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  /* Mobilde blur efektini azalt */
+  .gallery-slide-prev,
+  .gallery-slide-next {
+    filter: blur(4px);
+    opacity: 0.5;
+    width: 8%;
+  }
+
+  .gallery-slide-main {
+    left: 8%;
+    width: 84%;
+  }
+
+  .gallery-nav {
+    width: 35px;
+    height: 35px;
+  }
+
+  .gallery-nav-prev {
+    left: 0.5rem;
+  }
+
+  .gallery-nav-next {
+    right: 0.5rem;
+  }
+
+  .gallery-thumbnails {
+    bottom: 1rem;
+    padding: 0.75rem;
+    gap: 0.4rem;
+  }
+
+  .gallery-thumbnail {
+    width: 40px;
+    height: 40px;
+  }
+}

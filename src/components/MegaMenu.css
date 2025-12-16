@@ -1,0 +1,415 @@
+.mega-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#checkbox2 {
+  display: none;
+}
+
+.toggle2 {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition-duration: 0.5s;
+}
+
+.bars {
+  width: 100%;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+}
+
+#bar5 {
+  transition-duration: 0.8s;
+}
+
+#bar4,
+#bar6 {
+  width: 80%;
+}
+
+#checkbox2:checked + .toggle2 .bars,
+.toggle2.active .bars {
+  position: absolute;
+  transition-duration: 0.5s;
+}
+
+#checkbox2:checked + .toggle2 #bar5,
+.toggle2.active #bar5 {
+  transform: scaleX(0);
+  transition-duration: 0.5s;
+}
+
+#checkbox2:checked + .toggle2 #bar4,
+.toggle2.active #bar4 {
+  width: 100%;
+  transform: rotate(45deg);
+  transition-duration: 0.5s;
+}
+
+#checkbox2:checked + .toggle2 #bar6,
+.toggle2.active #bar6 {
+  width: 100%;
+  transform: rotate(-45deg);
+  transition-duration: 0.5s;
+}
+
+#checkbox2:checked + .toggle2,
+.toggle2.active {
+  transition-duration: 0.5s;
+  transform: rotate(180deg);
+}
+
+.menu-button_text {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mega-menu-overlay {
+  position: fixed;
+  top: 100px; /* Header'ın altında başlaması için - JavaScript ile güncellenir */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  animation: fadeIn 0.3s ease;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.mega-menu-overlay.closing {
+  animation: fadeOut 0.3s ease;
+}
+
+.mega-menu-content {
+  position: fixed;
+  top: 100px; /* Header'ın altında başlaması için - JavaScript ile güncellenir */
+  left: 0;
+  width: 100%;
+  height: 65vh; /* Increased to include footer */
+  background: #dfd8cf;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  animation: slideDown 0.4s ease;
+  overflow: hidden;
+  pointer-events: auto;
+  /* Content'in dışındaki alanlara tıklanabilir olması için */
+}
+
+.mega-menu-content.closing {
+  animation: slideUp 0.4s ease;
+}
+
+.mega-menu-main {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mega-menu-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Changed from flex-end to center since footer is separate */
+  padding: 0 0 0 4rem;
+}
+
+.mega-menu-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.mega-menu-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(48, 65, 67, 0.2) 0%, rgba(26, 42, 43, 0.3) 100%), 
+              url('/general.png') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mega-menu-footer {
+  height: 10vh; /* About 5vh visible + padding */
+  min-height: 80px;
+  background-color: #d4cbbd; /* Slightly darker beige */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #304143;
+  border-top: 1px solid rgba(48, 65, 67, 0.1);
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contact-item span:first-child {
+  font-weight: 600;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  letter-spacing: 0.1em;
+}
+
+.contact-item span:last-child {
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* Genel Plan Butonu - Header stili ile (border-only) */
+.genplan-btn {
+  width: 140px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #dfd8cf;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  font-family: 'Marcellus', serif;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+  z-index: 2;
+}
+
+/* Gradient border için background layer */
+.genplan-btn::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background-size: 250%;
+  background-position: left;
+  border-radius: 10px;
+  z-index: -2;
+  transition-duration: 1s;
+}
+
+.genplan-btn::before {
+  position: absolute;
+  content: "Genel Plan";
+  color: #dfd8cf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: transparent;
+  background-size: 200%;
+  z-index: -1;
+}
+
+.genplan-btn:hover::after {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.genplan-btn:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.genplan-btn:active {
+  transform: scale(0.95);
+}
+
+.mega-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mega-menu-item {
+  display: block;
+  color: #304143;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: 'Marcellus', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  position: relative;
+  width: fit-content;
+}
+
+.mega-menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #304143;
+  transition: width 0.3s ease;
+}
+
+.mega-menu-item:hover {
+  opacity: 0.7;
+}
+
+.mega-menu-item:hover::after {
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mega-menu-left {
+    padding: 0 0 0 3rem;
+  }
+  
+  .mega-menu-item {
+    font-size: 2rem;
+  }
+  
+  .mega-menu-footer {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .toggle2 {
+    width: 35px;
+    height: 35px;
+    gap: 5px;
+  }
+  
+  .bars {
+    height: 2.5px;
+  }
+  
+  .mega-menu-content {
+    height: 85vh;
+    top: 80px; /* Mobilde header daha küçük */
+  }
+  
+  .mega-menu-overlay {
+    top: 80px; /* Mobilde header daha küçük */
+  }
+  
+  .mega-menu-main {
+    flex-direction: column;
+  }
+  
+  .mega-menu-left {
+    width: 100%;
+    height: 50%;
+    padding: 2rem 0 2rem 2rem;
+    justify-content: center;
+  }
+  
+  .mega-menu-right {
+    width: 100%;
+    height: 30%;
+  }
+  
+  .mega-menu-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    height: auto;
+  }
+  
+  .contact-item {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .contact-item span:first-child {
+    min-width: 60px;
+  }
+
+  .mega-menu-item {
+    font-size: 1.75rem;
+  }
+  
+  .genplan-btn {
+    width: 120px;
+    height: 36px;
+    font-size: 0.75rem;
+  }
+  
+  .genplan-btn::before {
+    font-size: 0.75rem;
+  }
+}

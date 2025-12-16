@@ -1,0 +1,51 @@
+.about-section {
+  background-color: var(--bg-color);
+  background-image: url('/aboutbg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 4rem 2rem;
+}
+
+.about-paragraph {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-dark);
+  text-align: center;
+  max-width: 900px;
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  .about-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    padding: 0 1rem;
+  }
+  
+  .about-content {
+    padding: 3rem 1rem;
+  }
+}
+
+
+
+
+
+
+
+

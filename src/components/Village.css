@@ -1,0 +1,176 @@
+.village-section {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  height: 80vh;
+  background: url('/villagebg.jpg') left top/cover no-repeat;
+  overflow: hidden;
+}
+
+.village-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
+  z-index: 1;
+}
+
+.village-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.village-text-box {
+  position: absolute;
+  right: 3rem;
+  bottom: 3rem;
+  left: auto;
+  max-width: 1240px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.village-kicker {
+  margin: 0;
+  font-family: 'Marcellus', serif;
+  font-size: 1.75rem;
+  letter-spacing: 0.1em;
+  color: #0b0b0b;
+  text-transform: uppercase;
+}
+
+.village-title {
+  margin: 0;
+  font-family: 'Marcellus', serif;
+  font-size: 3.4rem;
+  color: #0b0b0b;
+  letter-spacing: 0.02em;
+}
+
+.village-subtitle {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #0b0b0b;
+  font-weight: 600;
+}
+
+.village-body {
+  margin: 0;
+  font-family: 'Marcellus', serif;
+  text-transform: uppercase;
+  font-size: 1.98rem;
+  line-height: 1.6;
+  color: #0b0b0b;
+  letter-spacing: 1.2px;
+}
+
+.village-note {
+  margin: 0.01rem 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #0b0b0b;
+  font-weight: 400;
+}
+
+.village-cta {
+  margin-top: 0.75rem;
+  align-self: flex-end;
+  padding: 0;
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.village-cta:hover {
+  background-position: right;
+}
+
+.village-cta:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.village-cta::before {
+  position: absolute;
+  content: "Bana Uygun mu?";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
+}
+
+.village-cta:active {
+  transform: scale(0.95);
+}
+
+.village-footnote {
+  margin: 0.6rem 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #0b0b0b;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .village-content {
+    padding: 0;
+  }
+
+  .village-text-box {
+    position: absolute;
+    right: 1.25rem;
+    left: 1.25rem;
+    bottom: 2.5rem;
+    max-width: none;
+    text-align: right;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 600px) {
+  .village-text-box {
+    padding: 0;
+  }
+
+  .village-title {
+    font-size: 1.5rem;
+  }
+
+  .village-body {
+    font-size: 0.94rem;
+  }
+}
+

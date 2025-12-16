@@ -1,0 +1,1 @@
+import{a1 as r}from"./entry.3464155d.js";function i(e){const t=e.querySelector(".anim-photo"),o=r.timeline();return o.add(()=>{e.classList.remove("anim-photo-wrapper")}),t&&(r.set(e,{overflow:"hidden"}),o.fromTo(t,{yPercent:-20},{yPercent:20,ease:"none"})),o}export{i as p};

@@ -1,0 +1,474 @@
+.map-section {
+  background-color: var(--bg-color);
+  background-image: url('/harita.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  margin-top: -100px;
+  z-index: 999;
+}
+
+.map-section::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100px;
+  background-color: #b9b8ac;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: 0;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.map-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  position: relative;
+  pointer-events: none;
+}
+
+/* Map Pin Stilleri */
+.map-pin {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8d8e80;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+.map-pin svg {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.map-pin:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  color: #8d8e80;
+}
+
+.map-pin.active {
+  color: #8d8e80;
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.map-pin.main-pin {
+  color: #3d8b4c;
+}
+
+.map-pin.main-pin:hover {
+  color: #3d8b4c;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.map-pin.main-pin.active {
+  color: #3d8b4c;
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+/* Rota çizgisi */
+.map-route {
+  overflow: visible;
+}
+
+.map-route path {
+  filter: drop-shadow(0 0 2px rgba(141, 142, 128, 0.3));
+}
+
+/* Dikey Expandable Gallery */
+.map-expandable-gallery {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 15;
+  max-height: calc(100% - 2rem);
+  overflow-y: auto;
+}
+
+.map-gallery-item {
+  width: 100%;
+  height: 3rem;
+  max-height: 3rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    max-height 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.35s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.map-gallery-item:not(.expanded) {
+  flex: 0 0 3rem;
+}
+
+.map-gallery-item.expanded {
+  height: auto;
+  min-height: 300px;
+  max-height: 560px;
+  flex: 1;
+}
+
+/* Beyaz overlay */
+.map-gallery-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.map-gallery-item-header {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.map-gallery-item-title {
+  font-family: 'Marcellus', serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.map-gallery-item.expanded .map-gallery-item-title {
+  white-space: normal;
+}
+
+/* Expanded content - popup içeriği */
+.map-gallery-item-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity 0.35s ease,
+    max-height 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-gallery-item.expanded .map-gallery-item-content {
+  opacity: 1;
+  max-height: 500px;
+}
+
+.map-gallery-item-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.map-gallery-item-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: rotate(90deg);
+}
+
+.map-gallery-item-content-image {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.map-gallery-item-content-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.map-gallery-item-content-title {
+  font-family: 'Marcellus', serif;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  line-height: 1.3;
+  padding-right: 2rem;
+}
+
+.map-gallery-item-content-address {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.map-gallery-item-content-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.map-gallery-item-content-distance {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(61, 139, 76, 0.1);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: var(--green-primary);
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.map-gallery-item-content-distance svg {
+  flex-shrink: 0;
+}
+
+.map-gallery-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .map-expandable-gallery {
+    width: calc(100% - 2rem);
+    max-width: 350px;
+  }
+}
+
+/* Overlay - Popup açıkken arka planı karart */
+.map-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 998;
+  animation: fadeIn 0.3s ease;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Popup Stilleri */
+.map-popup {
+  position: absolute;
+  top: 1rem;
+  right: -400px;
+  width: 380px;
+  background: var(--white);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-popup.open {
+  right: 1rem;
+}
+
+.map-popup-content {
+  padding: 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.map-popup-image {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.map-popup-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.map-popup-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.map-popup-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: rotate(90deg);
+}
+
+.map-popup-title {
+  font-family: 'Marcellus', serif;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  line-height: 1.3;
+  padding-right: 2rem;
+}
+
+.map-popup-address {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.map-popup-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.map-popup-distance {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(61, 139, 76, 0.1);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: var(--green-primary);
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.map-popup-distance svg {
+  flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .map-popup {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-popup {
+    width: 90%;
+    max-width: 350px;
+    right: -90%;
+    max-height: 60vh;
+  }
+
+  .map-popup.open {
+    right: 0;
+  }
+
+  .map-popup-content {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .map-popup-title {
+    font-size: 1.25rem;
+    padding-right: 1.5rem;
+  }
+
+  .map-pin {
+    width: 35px;
+    height: 35px;
+  }
+}
+

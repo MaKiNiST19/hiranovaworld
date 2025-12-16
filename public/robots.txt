@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hiranova.com/sitemap.xml
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,555 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999999 ;
+  background: transparent;
+  padding: 2rem 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-sticky {
+  background: var(--bg-color);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  padding: 1rem 0;
+}
+
+.header-sticky .plain-btn {
+  color: var(--dark-green);
+  border-color: rgba(61, 139, 76, 0.3);
+}
+
+.header-sticky .plain-btn:hover {
+  border-color: rgba(61, 139, 76, 0.6);
+}
+
+/* Rezervasyon butonu sticky durumunda aynı kalır */
+.header-sticky .reservation-btn {
+  /* Sticky durumunda stil değişmez */
+}
+
+.header-sticky .phone-link {
+  color: var(--dark-green);
+  text-shadow: none;
+}
+
+.header-sticky .general-plan-btn::before {
+  color: #304143;
+  text-shadow: none;
+}
+
+/* Sticky durumda hamburger menü ikonu ve metin siyah olmalı */
+.header-sticky .bars {
+  background-color: #000000;
+}
+
+.header-sticky .menu-button_text {
+  color: #000000;
+  text-shadow: none;
+}
+
+/* Mega menü açıkken header arka plan rengi */
+body.mega-menu-open .header {
+  background: #dfd8cf;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+body.mega-menu-open .menu-button_text {
+  color: #000000;
+}
+body.mega-menu-open .bars {background-color: #000000;}
+body.mega-menu-open .phone-link {color: #000000;}
+
+.header-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.header-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.header-center > * {
+  pointer-events: auto;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: flex-end;
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.header-logo:hover {
+  opacity: 0.9;
+}
+
+.header-logo img {
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: filter 0.4s ease, transform 0.3s ease;
+}
+
+.header-logo:hover img {
+  transform: scale(1.05);
+}
+
+.header-sticky .header-logo img {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(21%) saturate(1847%) hue-rotate(94deg) brightness(94%) contrast(88%) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Mega menü açıkken logo orijinal olmalı */
+body.mega-menu-open .header-logo img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Mega menü açıkken ve sticky durumda da logo orijinal olmalı */
+body.mega-menu-open .header-sticky .header-logo img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+
+/* Rezervasyon Butonu - Özel Stil */
+.reservation-btn {
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+.reservation-btn::before {
+  position: absolute;
+  content: "Rezervasyon Yap";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
+}
+
+.reservation-btn:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.reservation-btn:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.reservation-btn:active {
+  transform: scale(0.95);
+}
+
+/* Kurucu Ortaklık Butonu - Rezervasyon ile aynı stil */
+.founder-partnership-btn {
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+.founder-partnership-btn::before {
+  position: absolute;
+  content: "Kurucu Ortaklık";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
+}
+
+.founder-partnership-btn:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.founder-partnership-btn:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.founder-partnership-btn:active {
+  transform: scale(0.95);
+}
+
+/* Genel Plan Butonu - Border Only Versiyonu */
+.general-plan-btn {
+  width: 140px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+  z-index: 0;
+}
+
+/* Gradient border için background layer */
+.general-plan-btn::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background-size: 250%;
+  background-position: left;
+  border-radius: 10px;
+  z-index: -2;
+  transition-duration: 1s;
+}
+
+.general-plan-btn::before {
+  position: absolute;
+  content: "Genel Plan";
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: transparent;
+  background-size: 200%;
+  z-index: -1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.general-plan-btn:hover::after {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.general-plan-btn:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.general-plan-btn:active {
+  transform: scale(0.95);
+}
+
+.plain-btn {
+  background: transparent;
+  color: var(--white);
+  padding: 0.625rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.plain-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.plain-btn:hover::before {
+  left: 0;
+}
+
+.plain-btn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.phone-link {
+  color: var(--white);
+  font-size: 0.8125rem;
+  font-weight: 300;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.phone-link:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 2rem;
+    gap: 1.5rem;
+  }
+  
+  .header-center {
+    position: static;
+    transform: none;
+  }
+  
+  .header-left,
+  .header-right {
+    gap: 1rem;
+  }
+  
+  .logo h1 {
+    font-size: 1.1rem;
+  }
+  
+  .reservation-btn,
+  .founder-partnership-btn,
+  .general-plan-btn {
+    width: 120px;
+    height: 36px;
+    font-size: 0.75rem;
+  }
+  
+  .reservation-btn::before,
+  .founder-partnership-btn::before,
+  .general-plan-btn::before {
+    font-size: 0.75rem;
+  }
+  
+  .plain-btn {
+    padding: 0.625rem 1.125rem;
+    font-size: 0.8125rem;
+  }
+  
+  .phone-link {
+    font-size: 0.8125rem;
+    padding: 0.625rem 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1.25rem 0;
+  }
+  
+  .header-container {
+    padding: 0 1.5rem;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  
+  .header-center {
+    position: static;
+    transform: none;
+    order: -1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header-left {
+    gap: 0.75rem;
+    justify-content: flex-start;
+  }
+  
+  .header-right {
+    position: static;
+    transform: none;
+    right: auto;
+    top: auto;
+    gap: 0.75rem;
+    justify-content: flex-end;
+  }
+  
+  .logo h1 {
+    font-size: 1rem;
+  }
+  
+  .reservation-btn,
+  .founder-partnership-btn,
+  .general-plan-btn {
+    width: 110px;
+    height: 34px;
+    font-size: 0.6875rem;
+  }
+  
+  .reservation-btn::before,
+  .founder-partnership-btn::before,
+  .general-plan-btn::before {
+    font-size: 0.6875rem;
+  }
+  
+  .plain-btn {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem;
+  }
+  
+  .phone-link {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .phone-link::before {
+    font-size: 0.875rem;
+  }
+  
+  .menu-button_text {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  .header-left {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .header-right {
+    position: static;
+    transform: none;
+    right: auto;
+    top: auto;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .logo h1 {
+    font-size: 0.9375rem;
+  }
+  
+  .reservation-btn,
+  .founder-partnership-btn,
+  .general-plan-btn {
+    width: 100px;
+    height: 32px;
+    font-size: 0.625rem;
+  }
+  
+  .reservation-btn::before,
+  .founder-partnership-btn::before,
+  .general-plan-btn::before {
+    font-size: 0.625rem;
+  }
+  
+  .plain-btn {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.6875rem;
+  }
+  
+  .phone-link {
+    font-size: 0.6875rem;
+    padding: 0.5rem 0.625rem;
+  }
+  
+  .menu-button_text {
+    display: none;
+  }
+  
+  .menu-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+

@@ -1,0 +1,11 @@
+.App {
+  position: relative;
+}
+
+/* Hero wrapper - 250vh scroll alanı oluşturur */
+.hero-wrapper {
+  height: 250vh;
+  position: relative;
+  z-index: 0;
+}
+

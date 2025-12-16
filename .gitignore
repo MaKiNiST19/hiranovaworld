@@ -34,9 +34,10 @@ Thumbs.db
 # Large files
 *.exe
 *.pdf
-*.mp4
 Antigravity.exe
-herovid.mp4
+# Allow hero video for deployment
+!public/herovid.mp4
+!public/hero-vid.mp4
 
 
 

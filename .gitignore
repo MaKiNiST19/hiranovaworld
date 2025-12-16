@@ -36,8 +36,7 @@ Thumbs.db
 *.pdf
 Antigravity.exe
 # Allow hero video for deployment
-!public/herovid.mp4
-!public/hero-vid.mp4
+!public/vidhero.mp4
 
 
 

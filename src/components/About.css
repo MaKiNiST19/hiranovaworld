@@ -68,7 +68,7 @@
   font-weight: 400;
   letter-spacing: 0.05em;
   /* Talebe göre gold gradient badge */
-  background: linear-gradient(135deg, #77530a 0%, #d4af37 50%, #77530a 100%);
+  background: linear-gradient(135deg, #77530a 0%, #D4AF37 50%, #77530a 100%);
   background-size: 200% auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;

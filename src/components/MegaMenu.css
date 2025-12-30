@@ -38,33 +38,33 @@
   width: 80%;
 }
 
-#checkbox2:checked + .toggle2 .bars,
+#checkbox2:checked+.toggle2 .bars,
 .toggle2.active .bars {
   position: absolute;
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked + .toggle2 #bar5,
+#checkbox2:checked+.toggle2 #bar5,
 .toggle2.active #bar5 {
   transform: scaleX(0);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked + .toggle2 #bar4,
+#checkbox2:checked+.toggle2 #bar4,
 .toggle2.active #bar4 {
   width: 100%;
   transform: rotate(45deg);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked + .toggle2 #bar6,
+#checkbox2:checked+.toggle2 #bar6,
 .toggle2.active #bar6 {
   width: 100%;
   transform: rotate(-45deg);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked + .toggle2,
+#checkbox2:checked+.toggle2,
 .toggle2.active {
   transition-duration: 0.5s;
   transform: rotate(180deg);
@@ -81,7 +81,8 @@
 
 .mega-menu-overlay {
   position: fixed;
-  top: 100px; /* Header'ın altında başlaması için - JavaScript ile güncellenir */
+  top: 100px;
+  /* Header'ın altında başlaması için - JavaScript ile güncellenir */
   left: 0;
   right: 0;
   bottom: 0;
@@ -98,10 +99,12 @@
 
 .mega-menu-content {
   position: fixed;
-  top: 100px; /* Header'ın altında başlaması için - JavaScript ile güncellenir */
+  top: 100px;
+  /* Header'ın altında başlaması için - JavaScript ile güncellenir */
   left: 0;
   width: 100%;
-  height: 65vh; /* Increased to include footer */
+  height: 65vh;
+  /* Increased to include footer */
   background: #dfd8cf;
   z-index: 100;
   display: flex;
@@ -127,7 +130,8 @@
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Changed from flex-end to center since footer is separate */
+  justify-content: center;
+  /* Changed from flex-end to center since footer is separate */
   padding: 0 0 0 4rem;
 }
 
@@ -143,8 +147,8 @@
 .mega-menu-image {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(48, 65, 67, 0.2) 0%, rgba(26, 42, 43, 0.3) 100%), 
-              url('/general.png') center/cover;
+  background: linear-gradient(135deg, rgba(48, 65, 67, 0.2) 0%, rgba(26, 42, 43, 0.3) 100%),
+    url('/general.png') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,9 +156,11 @@
 }
 
 .mega-menu-footer {
-  height: 10vh; /* About 5vh visible + padding */
+  height: 10vh;
+  /* About 5vh visible + padding */
   min-height: 80px;
-  background-color: #d4cbbd; /* Slightly darker beige */
+  background-color: #d4cbbd;
+  /* Slightly darker beige */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -296,6 +302,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -305,6 +312,7 @@
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -315,6 +323,7 @@
     transform: translateY(-110%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -326,6 +335,7 @@
     transform: translateY(0);
     opacity: 1;
   }
+
   to {
     transform: translateY(-110%);
     opacity: 0;
@@ -336,11 +346,11 @@
   .mega-menu-left {
     padding: 0 0 0 3rem;
   }
-  
+
   .mega-menu-item {
     font-size: 2rem;
   }
-  
+
   .mega-menu-footer {
     padding: 0 3rem;
   }
@@ -352,36 +362,38 @@
     height: 35px;
     gap: 5px;
   }
-  
+
   .bars {
     height: 2.5px;
   }
-  
+
   .mega-menu-content {
     height: 85vh;
-    top: 80px; /* Mobilde header daha küçük */
+    top: 80px;
+    /* Mobilde header daha küçük */
   }
-  
+
   .mega-menu-overlay {
-    top: 80px; /* Mobilde header daha küçük */
+    top: 80px;
+    /* Mobilde header daha küçük */
   }
-  
+
   .mega-menu-main {
     flex-direction: column;
   }
-  
+
   .mega-menu-left {
     width: 100%;
     height: 50%;
     padding: 2rem 0 2rem 2rem;
     justify-content: center;
   }
-  
+
   .mega-menu-right {
     width: 100%;
     height: 30%;
   }
-  
+
   .mega-menu-footer {
     flex-direction: column;
     align-items: flex-start;
@@ -389,12 +401,12 @@
     gap: 1rem;
     height: auto;
   }
-  
+
   .contact-item {
     flex-direction: row;
     gap: 1rem;
   }
-  
+
   .contact-item span:first-child {
     min-width: 60px;
   }
@@ -402,13 +414,13 @@
   .mega-menu-item {
     font-size: 1.75rem;
   }
-  
+
   .genplan-btn {
     width: 120px;
     height: 36px;
     font-size: 0.75rem;
   }
-  
+
   .genplan-btn::before {
     font-size: 0.75rem;
   }

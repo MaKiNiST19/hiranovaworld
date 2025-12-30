@@ -26,8 +26,8 @@
   height: 100%;
   background: linear-gradient(to bottom,
       transparent 0%,
-      rgba(212, 175, 55, 0.4) 15%,
-      rgba(212, 175, 55, 0.4) 85%,
+      rgba(192, 192, 192, 0.4) 15%,
+      rgba(192, 192, 192, 0.4) 85%,
       transparent 100%);
 }
 
@@ -51,7 +51,7 @@
 .contact-title {
   font-family: 'Marcellus', serif;
   font-size: 3.2rem;
-  color: #C9A96E;
+  color: #D4AF37;
   /* Bronze/gold like reference */
   margin: 0 0 25px 0;
   font-style: italic;
@@ -62,7 +62,7 @@
 .contact-subtitle {
   font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
-  color: #C9A96E;
+  color: #D4AF37;
   margin: 0;
   letter-spacing: 0.08em;
   font-weight: 300;
@@ -85,7 +85,7 @@
 .contact-tagline {
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
-  color: #C9A96E;
+  color: #D4AF37;
   margin: 0;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -103,7 +103,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #E8E8E8;
+  color: #E0E0E0;
   text-decoration: none;
   font-family: 'Inter', sans-serif;
   font-size: 1.05rem;
@@ -112,7 +112,7 @@
 }
 
 .contact-item:hover {
-  color: #C9A96E;
+  color: #D4AF37;
 }
 
 .contact-icon {
@@ -135,7 +135,7 @@
 
 .whatsapp-item:hover {
   background: rgba(201, 169, 110, 0.1);
-  border-color: #C9A96E;
+  border-color: #D4AF37;
 }
 
 /* Responsive */

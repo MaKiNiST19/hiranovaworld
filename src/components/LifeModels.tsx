@@ -4,31 +4,28 @@ import './LifeModels.css'
 const LifeModels: React.FC = () => {
   return (
     <section id="lifemodels" className="lifemodels-section">
-      <div className="lifemodels-inner">
-        <header className="lifemodels-header">
-          <h3 className="lifemodels-title">Life Models</h3>
-          <p className="lifemodels-description">
-            HiraNova&apos;nın iki farklı yaşam modeli ile doğa, konfor ve özgürlüğü kendi ritminize göre deneyimleyin.
+      <div className="lifemodels-artboard">
+        {/* Background Mountains */}
+        <div className="artboard-carrier"></div>
+
+        {/* Content Container */}
+        <div className="artboard-content">
+          <h2 className="artboard-title">Life Models</h2>
+          <p className="artboard-desc">
+            Garden ve Suit modelleri, doğanın içinde müstakil bir yaşam veya otel konforunda gelir odaklı bir yatırım sunar.
+            <br />
+            Her iki seçenek de HiraNova'nın profesyonel işletme güvencesiyle yönetilir; siz hayatın tadını çıkarırken sistem sizin için çalışır.
           </p>
-        </header>
 
-        <div className="lifemodels-grid">
-          <article className="lifemodels-card">
-            <div className="lifemodels-image-wrapper">
-              <img src="/gardenlife.jpg" alt="Garden Life" className="lifemodels-image" loading="lazy" />
-            </div>
-          </article>
-
-          <article className="lifemodels-card">
-            <div className="lifemodels-image-wrapper">
-              <img src="/villalife.jpg" alt="Villa Life" className="lifemodels-image" loading="lazy" />
-            </div>
-          </article>
+          {/* Animated Flower */}
+          <div className="artboard-flower">
+            <img
+              src="https://static.tildacdn.com/tild3134-3639-4233-a365-353434376362/flower.svg"
+              alt="Decorative Flower"
+              className="flower-img"
+            />
+          </div>
         </div>
-
-        <p className="lifemodels-note">
-          Detaylar, ön değerlendirme sonrasında paylaşılır.
-        </p>
       </div>
     </section>
   )

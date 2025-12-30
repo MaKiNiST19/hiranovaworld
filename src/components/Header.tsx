@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import MegaMenu, { MegaMenuRef } from './MegaMenu'
+import { CONTACT_INFO } from '../constants'
 import './Header.css'
 
 const Header: React.FC = () => {
@@ -10,10 +11,8 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY
       const windowHeight = window.innerHeight
-      const heroScrollRange = windowHeight * 3.5 // 350vh
-      
-      // Hero scroll'u bittikten sonra sticky olsun
-      setIsSticky(scrollY > heroScrollRange)
+      // Sticky header after 30vh
+      setIsSticky(scrollY > windowHeight * 0.3)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -44,35 +43,27 @@ const Header: React.FC = () => {
     if (isMegaMenuOpen && megaMenuRef.current) {
       megaMenuRef.current.close()
     }
-    
+
     // Anasayfada mıyız kontrol et
-    const isHomePage = window.location.pathname === '/' || 
-                      window.location.pathname === '/index.html' ||
-                      window.location.pathname === ''
-    
+    const isHomePage = window.location.pathname === '/' ||
+      window.location.pathname === '/index.html' ||
+      window.location.pathname === ''
+
     if (isHomePage) {
-      // Mega menü kapanma animasyonunu bekle (400ms) sonra scroll
-      if (isMegaMenuOpen) {
-        setTimeout(() => {
-          const lenisInstance = (window as any).lenis
-          if (lenisInstance) {
-            lenisInstance.start() // Lenis'i tekrar başlat
+      const lenisInstance = (window as any).lenis
+      if (lenisInstance) {
+        if (isMegaMenuOpen) {
+          setTimeout(() => {
+            lenisInstance.start()
             lenisInstance.scrollTo(0, { duration: 1.2, easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
-          } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }
-        }, 400) // Mega menü kapanma animasyon süresi
-      } else {
-        // Mega menü kapalıysa direkt scroll
-        const lenisInstance = (window as any).lenis
-        if (lenisInstance) {
-          lenisInstance.scrollTo(0, { duration: 1.2, easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+          }, 400)
         } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
+          lenisInstance.scrollTo(0, { duration: 1.2, easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
         }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } else {
-      // Diğer sayfalarda ise anasayfaya git
       window.location.href = '/'
     }
   }
@@ -91,17 +82,17 @@ const Header: React.FC = () => {
           </button>
         </div>
 
-        {/* Orta - Logo (scroll ile gelecek) */}
+        {/* Orta - Logo (Sticky durumuna göre değişir) */}
         <div className="header-center">
-          <div id="header-logo" className="header-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
-            <img src="/beyaz-logo.png" alt="HiraNova" />
+          <div id="header-logo" className="header-logo-permanent" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
+            <img src={isSticky ? "/hira-nova-logo.png" : "/beyaz-logo.png"} alt="HiraNova" />
           </div>
         </div>
 
         {/* Sağ taraf */}
         <div className="header-right">
-          <a href="tel:+905551234567" className="phone-link">
-            +90 555 123 45 67
+          <a href={`tel:${CONTACT_INFO.whatsapp}`} className="phone-link">
+            {CONTACT_INFO.phoneDisplay}
           </a>
           <button className="founder-partnership-btn" onClick={handleFounderPartnership}>
             Kurucu Ortaklık

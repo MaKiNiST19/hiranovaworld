@@ -4,17 +4,19 @@
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 999999 ;
+  z-index: 999999;
   background: transparent;
   padding: 2rem 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-sticky {
-  background: var(--bg-color);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-  padding: 1rem 0;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .header-sticky .plain-btn {
@@ -32,8 +34,55 @@
 }
 
 .header-sticky .phone-link {
-  color: var(--dark-green);
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #77530a, #d4af37, #77530a, #77530a, #d4af37, #77530a);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
   text-shadow: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header-sticky .phone-link::before {
+  position: absolute;
+  content: "İLETİŞİM";
+  /* Or dynamic number if preferred, but usually button text is better profile */
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Matching the white sticky header */
+  background-size: 200%;
+  z-index: 1;
+}
+
+.header-sticky .phone-link:hover {
+  background-position: right;
+}
+
+.header-sticky .phone-link:active {
+  transform: scale(0.95);
 }
 
 .header-sticky .general-plan-btn::before {
@@ -57,11 +106,18 @@ body.mega-menu-open .header {
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
 }
+
 body.mega-menu-open .menu-button_text {
   color: #000000;
 }
-body.mega-menu-open .bars {background-color: #000000;}
-body.mega-menu-open .phone-link {color: #000000;}
+
+body.mega-menu-open .bars {
+  background-color: #000000;
+}
+
+body.mega-menu-open .phone-link {
+  color: #000000;
+}
 
 .header-container {
   width: 100%;
@@ -92,7 +148,7 @@ body.mega-menu-open .phone-link {color: #000000;}
   pointer-events: none;
 }
 
-.header-center > * {
+.header-center>* {
   pointer-events: auto;
 }
 
@@ -108,26 +164,29 @@ body.mega-menu-open .phone-link {color: #000000;}
   white-space: nowrap;
 }
 
-.header-logo {
+.header-logo-permanent {
   display: flex;
   align-items: center;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  height: 100%;
+  /* Take full header height available */
 }
 
-.header-logo:hover {
+.header-logo-permanent:hover {
   opacity: 0.9;
 }
 
-.header-logo img {
+.header-logo-permanent img {
   height: 45px;
+  /* Constrain height to normal header size */
   width: auto;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   transition: filter 0.4s ease, transform 0.3s ease;
 }
 
-.header-logo:hover img {
+.header-logo-permanent:hover img {
   transform: scale(1.05);
 }
 
@@ -152,7 +211,7 @@ body.mega-menu-open .header-sticky .header-logo img {
   height: 40px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background: linear-gradient(to right, #77530a, #d4af37, #77530a, #77530a, #d4af37, #77530a);
   background-size: 250%;
   background-position: left;
   color: #ffd277;
@@ -206,7 +265,7 @@ body.mega-menu-open .header-sticky .header-logo img {
   height: 40px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background: linear-gradient(to right, #77530a, #d4af37, #77530a, #77530a, #d4af37, #77530a);
   background-size: 250%;
   background-position: left;
   color: #ffd277;
@@ -286,7 +345,7 @@ body.mega-menu-open .header-sticky .header-logo img {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background: linear-gradient(to right, #77530a, #d4af37, #77530a, #77530a, #d4af37, #77530a);
   background-size: 250%;
   background-position: left;
   border-radius: 10px;
@@ -387,21 +446,21 @@ body.mega-menu-open .header-sticky .header-logo img {
     padding: 0 2rem;
     gap: 1.5rem;
   }
-  
+
   .header-center {
     position: static;
     transform: none;
   }
-  
+
   .header-left,
   .header-right {
     gap: 1rem;
   }
-  
+
   .logo h1 {
     font-size: 1.1rem;
   }
-  
+
   .reservation-btn,
   .founder-partnership-btn,
   .general-plan-btn {
@@ -409,18 +468,18 @@ body.mega-menu-open .header-sticky .header-logo img {
     height: 36px;
     font-size: 0.75rem;
   }
-  
+
   .reservation-btn::before,
   .founder-partnership-btn::before,
   .general-plan-btn::before {
     font-size: 0.75rem;
   }
-  
+
   .plain-btn {
     padding: 0.625rem 1.125rem;
     font-size: 0.8125rem;
   }
-  
+
   .phone-link {
     font-size: 0.8125rem;
     padding: 0.625rem 0.875rem;
@@ -431,25 +490,25 @@ body.mega-menu-open .header-sticky .header-logo img {
   .header {
     padding: 1.25rem 0;
   }
-  
+
   .header-container {
     padding: 0 1.5rem;
     gap: 1rem;
     grid-template-columns: 1fr;
   }
-  
+
   .header-center {
     position: static;
     transform: none;
     order: -1;
     margin-bottom: 0.5rem;
   }
-  
+
   .header-left {
     gap: 0.75rem;
     justify-content: flex-start;
   }
-  
+
   .header-right {
     position: static;
     transform: none;
@@ -458,11 +517,11 @@ body.mega-menu-open .header-sticky .header-logo img {
     gap: 0.75rem;
     justify-content: flex-end;
   }
-  
+
   .logo h1 {
     font-size: 1rem;
   }
-  
+
   .reservation-btn,
   .founder-partnership-btn,
   .general-plan-btn {
@@ -470,27 +529,27 @@ body.mega-menu-open .header-sticky .header-logo img {
     height: 34px;
     font-size: 0.6875rem;
   }
-  
+
   .reservation-btn::before,
   .founder-partnership-btn::before,
   .general-plan-btn::before {
     font-size: 0.6875rem;
   }
-  
+
   .plain-btn {
     padding: 0.5rem 0.875rem;
     font-size: 0.75rem;
   }
-  
+
   .phone-link {
     font-size: 0.75rem;
     padding: 0.5rem 0.75rem;
   }
-  
+
   .phone-link::before {
     font-size: 0.875rem;
   }
-  
+
   .menu-button_text {
     font-size: 0.75rem;
   }
@@ -500,12 +559,12 @@ body.mega-menu-open .header-sticky .header-logo img {
   .header-container {
     padding: 0 1rem;
   }
-  
+
   .header-left {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  
+
   .header-right {
     position: static;
     transform: none;
@@ -514,11 +573,11 @@ body.mega-menu-open .header-sticky .header-logo img {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  
+
   .logo h1 {
     font-size: 0.9375rem;
   }
-  
+
   .reservation-btn,
   .founder-partnership-btn,
   .general-plan-btn {
@@ -526,30 +585,29 @@ body.mega-menu-open .header-sticky .header-logo img {
     height: 32px;
     font-size: 0.625rem;
   }
-  
+
   .reservation-btn::before,
   .founder-partnership-btn::before,
   .general-plan-btn::before {
     font-size: 0.625rem;
   }
-  
+
   .plain-btn {
     padding: 0.5rem 0.875rem;
     font-size: 0.6875rem;
   }
-  
+
   .phone-link {
     font-size: 0.6875rem;
     padding: 0.5rem 0.625rem;
   }
-  
+
   .menu-button_text {
     display: none;
   }
-  
+
   .menu-icon {
     width: 1.25rem;
     height: 1.25rem;
   }
 }
-

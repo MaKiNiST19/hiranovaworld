@@ -1,0 +1,151 @@
+.nature-retreat-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Forest Artboard Area - Top Section */
+.retreat-artboard {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background-color: #dfd5cc;
+    overflow: hidden;
+}
+
+.forest-img {
+    width: 100%;
+    height: 100%;
+    object-fit: x-cover;
+}
+
+/* Content Background Area - Bottom Section */
+.retreat-content-bg {
+    width: 100%;
+    background-color: #163422;
+    margin-top: -600px;
+    /* Overlap with artboard */
+    padding-top: 200px;
+    /* Compensate for overlap */
+}
+
+/* Content Overlay - Transparent cards on top */
+.retreat-content-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+}
+
+.retreat-header {
+    margin-bottom: 60px;
+}
+
+.retreat-title {
+    font-family: 'Marcellus', serif;
+    font-size: 3.5rem;
+    color: #D4AF37;
+    text-align: center;
+    margin: 0 0 20px 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.retreat-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #E0E0E0;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 700px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Feature Rows */
+.retreat-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.feature-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 30px 0;
+    border-radius: 20px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 6px -30px;
+    transition: background 0.3s ease;
+}
+
+.feature-row:first-child {
+    border-top: 1px solid rgba(212, 175, 55, 0.6);
+}
+
+.feature-row:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-title {
+    font-family: 'Marcellus', serif;
+    font-size: 1.4rem;
+    color: #D4AF37;
+    margin: 0 0 10px 0;
+}
+
+.feature-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #C0C0C0;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .retreat-content-overlay {
+        padding: 60px 20px;
+    }
+
+    .retreat-title {
+        font-size: 2.2rem;
+    }
+
+    .feature-row {
+        flex-direction: column;
+        gap: 15px;
+        padding: 25px 20px;
+        margin: 0 -20px;
+    }
+
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}

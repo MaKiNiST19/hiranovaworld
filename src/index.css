@@ -45,13 +45,23 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--text-dark);
+  color: var(--white);
+  /* Changed from var(--text-dark) for better readability on dark bg */
   line-height: 1.6;
   overflow-x: hidden;
-  background-color: var(--bg-color);
+  background-color: #000;
+  background-image: url('/web-site-bg.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Marcellus', serif;
   font-weight: 600;
   line-height: 1.2;
@@ -96,10 +106,9 @@ button {
   .section {
     padding: 60px 0;
   }
-  
+
   .section-title {
     font-size: 2rem;
     margin-bottom: 2rem;
   }
 }
-

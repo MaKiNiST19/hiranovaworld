@@ -1,0 +1,171 @@
+.world-selector-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0c2618;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    /* Container padding to ensure outer margins */
+}
+
+.world-container {
+    display: flex;
+    width: 100%;
+    height: 90vh;
+    max-width: 100%;
+    /* Allow full width expansion */
+    gap: 0.75rem;
+    /* Gap between boxes: 0.75rem total */
+}
+
+.world-box {
+    flex: 1;
+    margin: 0;
+    /* Removed individual margins to rely on gap and padding */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    /* Optional: Slight rounding for elegance */
+    transition: all 0.5s ease;
+}
+
+/* BACKGROUND LOGIC */
+.world-bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.6s ease-in-out, filter 0.6s ease, transform 0.8s ease;
+    z-index: 1;
+}
+
+/* Backgrounds are now handled via inline styles based on state,
+   so we remove the specific :first-child/.bg-default rules */
+
+/* HOVER STATES */
+
+/* Active Box (The one being hovered) */
+.world-box.active .world-bg {
+    filter: blur(8px) brightness(0.7);
+    transform: scale(1.05);
+}
+
+/* Dark Green Overlay - Increased Opacity */
+.world-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Increased opacity as requested */
+    background: linear-gradient(to bottom,
+            rgba(21, 56, 34, 0.5) 0%,
+            /* Started at 0.2, now 0.5 */
+            rgba(21, 56, 34, 0.75) 100%
+            /* Started at 0.4, now 0.75 */
+        );
+    z-index: 5;
+    /* Above BG, Below Content */
+    pointer-events: none;
+    transition: background 0.5s ease;
+}
+
+.world-box.active .world-overlay {
+    background: linear-gradient(to bottom,
+            rgba(21, 56, 34, 0.6) 0%,
+            rgba(21, 56, 34, 0.85) 100%);
+}
+
+/* CONTENT STYLING */
+.world-content {
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    padding: 2rem;
+    max-width: 500px;
+}
+
+.world-title {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    margin-bottom: 2rem;
+    color: #ffffff;
+    /* Explicitly White */
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease;
+}
+
+.world-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    transform: translateY(20px);
+}
+
+.world-box.active .world-details,
+.world-box:hover .world-details {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.world-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* BUTTON STYLE - Header Sticky Button Replica (10px Radius) */
+.world-btn {
+    padding: 0.8rem 2.5rem;
+    background: linear-gradient(to right, #77530a, #d4af37, #77530a, #77530a, #d4af37, #77530a);
+    background-size: 250%;
+    background-position: left;
+    border: none;
+    border-radius: 10px;
+    /* Matching Header Button Radius */
+    color: #fff;
+    font-family: inherit;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.world-btn:hover {
+    background-position: right;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .world-container {
+        flex-direction: column;
+    }
+
+    .world-box {
+        margin: 1rem 0;
+        width: 100%;
+    }
+
+    .world-bg {
+        background-position: center !important;
+        /* Full image on mobile */
+    }
+}

@@ -1,0 +1,90 @@
+.horizontal-gallery-wrapper {
+    position: relative;
+    height: 600vh;
+    background-color: #153822;
+    /* HiraNova Koyu Yeşil */
+}
+
+.decor-lines-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    z-index: 1;
+    padding: 0 5vw;
+}
+
+.decor-line {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(212, 175, 55, 0.08) 20%,
+            rgba(212, 175, 55, 0.08) 80%,
+            transparent 100%);
+}
+
+.sticky-content {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+}
+
+.horizontal-scroll-container {
+    display: flex;
+    gap: 2vw;
+    /* Dar Gap */
+    padding: 0 10vw;
+    will-change: transform;
+    align-items: center;
+    height: 75vh;
+}
+
+.gallery-item {
+    position: relative;
+    /* 1000px genişlikte bir görselin 900px görünmesi gibi bir oran (%90) */
+    flex: 0 0 clamp(450px, 75vw, 1100px);
+    height: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+    background: transparent;
+    /* Siyah arka plan kaldırıldı */
+}
+
+.gallery-item img {
+    /* Konteynerdan daha geniş (%120), böylece parallax için pay kalır */
+    width: 120%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+    /* Başlangıçta ortalamak için */
+    margin-left: -10%;
+    transition: transform 0.1s ease-out;
+    /* Akıcı parallax için hafif transition */
+}
+
+@media (max-width: 768px) {
+    .horizontal-gallery-wrapper {
+        height: 450vh;
+    }
+
+    .gallery-item {
+        flex: 0 0 90vw;
+        height: 60vh;
+    }
+
+    .horizontal-scroll-container {
+        padding: 0 5vw;
+        gap: 4vw;
+    }
+}

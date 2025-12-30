@@ -1,7 +1,7 @@
 .life-values-section {
   width: 100%;
   padding: 5rem 4rem 5rem;
-  background-color: var(--bg-color);
+  background-color: #153822;
   box-sizing: border-box;
 }
 
@@ -20,7 +20,7 @@
   background: radial-gradient(circle at top left, #ffffff, #f5f1ea);
   border-radius: 20px;
   padding: 1.5rem 1.6rem 1.8rem;
-  box-shadow: 
+  box-shadow:
     0 0 0 4px rgba(119, 83, 10, 0.3),
     0 18px 40px rgba(0, 0, 0, 0.08);
   border: none;
@@ -59,12 +59,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.45) 35%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 35%,
+      rgba(0, 0, 0, 0) 80%);
   border-radius: 20px;
   z-index: 1;
   pointer-events: none;
@@ -97,11 +95,11 @@
 
 /* Görsel kartlar için gradient border - box-shadow ile */
 .bento-card--hero,
-.bento-grid > article:nth-child(2),
-.bento-grid > article:nth-child(3),
-.bento-grid > article:nth-child(4),
-.bento-grid > article:last-child {
-  box-shadow: 
+.bento-grid>article:nth-child(2),
+.bento-grid>article:nth-child(3),
+.bento-grid>article:nth-child(4),
+.bento-grid>article:last-child {
+  box-shadow:
     0 0 0 4px rgba(119, 83, 10, 0.3),
     0 18px 40px rgba(0, 0, 0, 0.08);
   transition:
@@ -110,11 +108,11 @@
 }
 
 .bento-card--hero:hover,
-.bento-grid > article:nth-child(2):hover,
-.bento-grid > article:nth-child(3):hover,
-.bento-grid > article:nth-child(4):hover,
-.bento-grid > article:last-child:hover {
-  box-shadow: 
+.bento-grid>article:nth-child(2):hover,
+.bento-grid>article:nth-child(3):hover,
+.bento-grid>article:nth-child(4):hover,
+.bento-grid>article:last-child:hover {
+  box-shadow:
     0 0 0 4px rgba(255, 210, 119, 0.8),
     0 26px 60px rgba(0, 0, 0, 0.18);
 }
@@ -144,12 +142,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.45) 35%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 35%,
+      rgba(0, 0, 0, 0) 80%);
   z-index: 1;
   pointer-events: none;
   opacity: 1;
@@ -157,7 +153,7 @@
 }
 
 /* 2. kart (eski tall) - hero gibi 6 kolon geniş */
-.bento-grid > article:nth-child(2) {
+.bento-grid>article:nth-child(2) {
   grid-column: span 6;
   color: #ffffff;
   background: transparent;
@@ -168,7 +164,7 @@
   overflow: hidden;
 }
 
-.bento-grid > article:nth-child(2)::before {
+.bento-grid>article:nth-child(2)::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -179,31 +175,29 @@
   border-radius: 20px;
 }
 
-.bento-grid > article:nth-child(2)::after {
+.bento-grid>article:nth-child(2)::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.45) 35%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 35%,
+      rgba(0, 0, 0, 0) 80%);
   z-index: 1;
   pointer-events: none;
   opacity: 1;
   border-radius: 20px;
 }
 
-.bento-grid > article:nth-child(2):hover::before {
+.bento-grid>article:nth-child(2):hover::before {
   filter: blur(18px) scale(1.05);
 }
 
-.bento-grid > article:nth-child(2):hover::after {
+.bento-grid>article:nth-child(2):hover::after {
   opacity: 1;
 }
 
-.bento-grid > article:nth-child(2) .bento-body {
+.bento-grid>article:nth-child(2) .bento-body {
   position: absolute;
   left: 1.6rem;
   right: 1.6rem;
@@ -220,7 +214,7 @@
     transform 0.4s ease;
 }
 
-.bento-grid > article:nth-child(2) .bento-title {
+.bento-grid>article:nth-child(2) .bento-title {
   position: absolute;
   left: 1.6rem;
   right: 1.6rem;
@@ -232,7 +226,7 @@
   z-index: 5;
 }
 
-.bento-grid > article:nth-child(2):hover .bento-body {
+.bento-grid>article:nth-child(2):hover .bento-body {
   max-height: 200px;
   line-height: 1.3;
   opacity: 1;
@@ -240,7 +234,7 @@
   bottom: 1rem;
 }
 
-.bento-grid > article:nth-child(2):hover .bento-title {
+.bento-grid>article:nth-child(2):hover .bento-title {
   bottom: 8.6rem;
   font-size: 1.5rem;
 }
@@ -266,12 +260,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.5) 45%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.5) 45%,
+      rgba(0, 0, 0, 0.15) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -302,7 +294,8 @@
 }
 
 .bento-card--tall:hover .bento-body {
-  max-height: 600px; /* tall kartta tüm metin görünsün */
+  max-height: 600px;
+  /* tall kartta tüm metin görünsün */
   opacity: 1;
   transform: translateY(0);
   bottom: 1rem;
@@ -313,7 +306,7 @@
 }
 
 /* 3. kart için arka plan görseli - 4 kolon geniş */
-.bento-grid > article:nth-child(3) {
+.bento-grid>article:nth-child(3) {
   grid-column: span 4;
   color: #ffffff;
   background: transparent;
@@ -324,7 +317,7 @@
   overflow: hidden;
 }
 
-.bento-grid > article:nth-child(3)::before {
+.bento-grid>article:nth-child(3)::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -335,32 +328,30 @@
   border-radius: 20px;
 }
 
-.bento-grid > article:nth-child(3)::after {
+.bento-grid>article:nth-child(3)::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.45) 35%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 35%,
+      rgba(0, 0, 0, 0) 80%);
   z-index: 1;
   pointer-events: none;
   opacity: 1;
   border-radius: 20px;
 }
 
-.bento-grid > article:nth-child(3):hover::before {
+.bento-grid>article:nth-child(3):hover::before {
   filter: blur(18px) scale(1.05);
 }
 
-.bento-grid > article:nth-child(3):hover::after {
+.bento-grid>article:nth-child(3):hover::after {
   opacity: 1;
 }
 
 /* 3. kartta da açıklama hover ile alttan gelsin, başlık yukarı çıksın */
-.bento-grid > article:nth-child(3) .bento-body {
+.bento-grid>article:nth-child(3) .bento-body {
   position: absolute;
   left: 1.6rem;
   right: 1.6rem;
@@ -377,7 +368,7 @@
     transform 0.4s ease;
 }
 
-.bento-grid > article:nth-child(3) .bento-title {
+.bento-grid>article:nth-child(3) .bento-title {
   position: absolute;
   left: 1.6rem;
   right: 1.6rem;
@@ -389,7 +380,7 @@
   z-index: 5;
 }
 
-.bento-grid > article:nth-child(3):hover .bento-body {
+.bento-grid>article:nth-child(3):hover .bento-body {
   max-height: 200px;
   opacity: 1;
   transform: translateY(0);
@@ -397,13 +388,13 @@
   line-height: 1.3;
 }
 
-.bento-grid > article:nth-child(3):hover .bento-title {
+.bento-grid>article:nth-child(3):hover .bento-title {
   bottom: 11rem;
   font-size: 1.5rem;
 }
 
 /* 4. kart için arka plan görseli - 4 kolon geniş */
-.bento-grid > article:nth-child(4) {
+.bento-grid>article:nth-child(4) {
   color: #ffffff;
   background: transparent;
   position: relative;
@@ -413,7 +404,7 @@
   overflow: hidden;
 }
 
-.bento-grid > article:nth-child(4)::before {
+.bento-grid>article:nth-child(4)::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -424,31 +415,29 @@
   border-radius: 20px;
 }
 
-.bento-grid > article:nth-child(4)::after {
+.bento-grid>article:nth-child(4)::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.45) 35%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 35%,
+      rgba(0, 0, 0, 0) 80%);
   z-index: 1;
   pointer-events: none;
   opacity: 1;
   border-radius: 20px;
 }
 
-.bento-grid > article:nth-child(4):hover::before {
+.bento-grid>article:nth-child(4):hover::before {
   filter: blur(18px) scale(1.05);
 }
 
-.bento-grid > article:nth-child(4):hover::after {
+.bento-grid>article:nth-child(4):hover::after {
   opacity: 1;
 }
 
-.bento-grid > article:nth-child(4) .bento-body {
+.bento-grid>article:nth-child(4) .bento-body {
   position: absolute;
   left: 1.6rem;
   right: 1.6rem;
@@ -465,7 +454,7 @@
     transform 0.4s ease;
 }
 
-.bento-grid > article:nth-child(4) .bento-title {
+.bento-grid>article:nth-child(4) .bento-title {
   position: absolute;
   left: 1.6rem;
   right: 1.6rem;
@@ -477,7 +466,7 @@
   z-index: 5;
 }
 
-.bento-grid > article:nth-child(4):hover .bento-body {
+.bento-grid>article:nth-child(4):hover .bento-body {
   max-height: 200px;
   opacity: 1;
   transform: translateY(0);
@@ -485,13 +474,13 @@
   line-height: 1.3;
 }
 
-.bento-grid > article:nth-child(4):hover .bento-title {
+.bento-grid>article:nth-child(4):hover .bento-title {
   bottom: 11rem;
   font-size: 1.5rem;
 }
 
 /* Sağ alttaki (5.) kart için arka plan görseli - 4 kolon geniş */
-.bento-grid > article:last-child {
+.bento-grid>article:last-child {
   grid-column: span 4;
   color: #ffffff;
   background: transparent;
@@ -502,7 +491,7 @@
   overflow: hidden;
 }
 
-.bento-grid > article:last-child::before {
+.bento-grid>article:last-child::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -513,23 +502,21 @@
   border-radius: 20px;
 }
 
-.bento-grid > article:last-child::after {
+.bento-grid>article:last-child::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.45) 35%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 35%,
+      rgba(0, 0, 0, 0) 80%);
   z-index: 1;
   pointer-events: none;
   opacity: 1;
   border-radius: 20px;
 }
 
-.bento-grid > article:last-child .bento-title {
+.bento-grid>article:last-child .bento-title {
   position: absolute;
   left: 1.6rem;
   right: 1.6rem;
@@ -540,7 +527,7 @@
   font-size: 1.5rem;
 }
 
-.bento-grid > article:last-child .bento-body {
+.bento-grid>article:last-child .bento-body {
   position: absolute;
   left: 1.6rem;
   right: 1.6rem;
@@ -556,22 +543,22 @@
     transform 0.35s ease;
 }
 
-.bento-grid > article:last-child:hover::before {
+.bento-grid>article:last-child:hover::before {
   filter: blur(18px) scale(1.05);
 }
 
-.bento-grid > article:last-child:hover::after {
+.bento-grid>article:last-child:hover::after {
   opacity: 1;
 }
 
-.bento-grid > article:last-child:hover .bento-body {
+.bento-grid>article:last-child:hover .bento-body {
   max-height: 220px;
   opacity: 1;
   transform: translateY(0);
   line-height: 1.3;
 }
 
-.bento-grid > article:last-child:hover .bento-title {
+.bento-grid>article:last-child:hover .bento-title {
   bottom: 11rem;
 }
 
@@ -661,13 +648,13 @@
   }
 
   .bento-card--hero,
-  .bento-grid > article:nth-child(2) {
+  .bento-grid>article:nth-child(2) {
     grid-column: span 6;
   }
 
-  .bento-grid > article:nth-child(3),
+  .bento-grid>article:nth-child(3),
   .bento-card--wide,
-  .bento-grid > article:last-child {
+  .bento-grid>article:last-child {
     grid-column: span 2;
   }
 }
@@ -682,11 +669,10 @@
   }
 
   .bento-card--hero,
-  .bento-grid > article:nth-child(2),
+  .bento-grid>article:nth-child(2),
   .bento-card--wide,
   .bento-card--tall {
     grid-column: span 1;
     grid-row: auto;
   }
 }
-

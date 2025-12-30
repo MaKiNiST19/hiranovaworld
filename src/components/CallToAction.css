@@ -1,0 +1,136 @@
+.cta-section {
+    width: 100%;
+    padding: 80px 0;
+    background-color: #153822;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 20px;
+    border-radius: 20px;
+}
+
+/* Decorative Vertical Lines */
+.decor-lines-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    z-index: 0;
+    padding: 0 5%;
+}
+
+.decor-line {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(212, 175, 55, 0.15) 20%,
+            rgba(212, 175, 55, 0.15) 80%,
+            transparent 100%);
+}
+
+/* Main Gradient Box */
+.cta-box {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(90deg, #8B5E3C, #D4AF37, #8B5E3C);
+    /* Bronze/Gold Gradient */
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.cta-title {
+    font-family: 'Marcellus', serif;
+    font-size: 3rem;
+    color: #0c1a11;
+    /* Dark Text on Gold */
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Standard Gold Button Style (New) */
+.cta-button {
+    margin-top: 0.75rem;
+    padding: 0;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+    background-size: 250%;
+    background-position: left;
+    color: #ffd277;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 1s;
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 300;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+}
+
+.cta-button:hover {
+    background-position: right;
+}
+
+.cta-button:hover::before {
+    background-position: right;
+    transition-duration: 1s;
+}
+
+.cta-button::before {
+    position: absolute;
+    content: "İLETİŞİME GEÇİN";
+    color: #ffd277;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+    height: 92%;
+    border-radius: 8px;
+    transition-duration: 1s;
+    background-color: rgba(0, 0, 0, 0.842);
+    background-size: 200%;
+}
+
+.cta-button:active {
+    transform: scale(0.95);
+}
+
+.cta-arrow {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .cta-title {
+        font-size: 2rem;
+    }
+
+    .cta-box {
+        padding: 40px 20px;
+    }
+}

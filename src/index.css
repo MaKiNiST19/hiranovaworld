@@ -1,7 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Blacker Sans Display';
+  src: url('/blacker/BlackerSansDisplayTrial-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Blacker Sans Display';
+  src: url('/blacker/BlackerSansDisplayTrial-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Blacker Sans Display';
+  src: url('/blacker/BlackerSansDisplayTrial-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
 }
 
 :root {
@@ -10,11 +33,12 @@
   --white: #FFFFFF;
   --dark-green: #2d6a3f;
   --light-green: #5ba86b;
-  --text-dark: #1a1a1a;
+  --text-dark: #39473f;
   --text-light: #666666;
   --header-color: var(--white);
   --easing: cubic-bezier(0.4, 0, 0.2, 1);
   --bg-color: #dfd8cf;
+  --font-serif-stack: 'Blacker Sans Display', 'Blacker Sans', Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 }
 
 html {
@@ -42,7 +66,7 @@ html.lenis {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--white);
@@ -62,7 +86,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-serif-stack);
   font-weight: 600;
   line-height: 1.2;
   color: var(--text-dark);

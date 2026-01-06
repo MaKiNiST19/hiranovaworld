@@ -29,11 +29,12 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
   ]
 
   const handleClose = () => {
+    if (isClosing || !isOpen) return
     setIsClosing(true)
     setTimeout(() => {
       setIsOpen(false)
       setIsClosing(false)
-    }, 400) // Animasyon süresi ile eşleşmeli
+    }, 450) // Animasyon süresinden (400ms) biraz daha uzun olmalı
   }
 
   const handleMenuClick = (link: string) => {
@@ -51,13 +52,13 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
       document.body.style.overflow = 'hidden'
       document.documentElement.style.overflow = 'hidden'
       document.body.classList.add('mega-menu-open')
-      
+
       // Lenis scroll'unu engelle
       const lenisInstance = (window as any).lenis
       if (lenisInstance) {
         lenisInstance.stop()
       }
-      
+
       // Header yüksekliğini hesapla ve mega menü için top değerini ayarla
       const header = document.querySelector('.header')
       if (header) {
@@ -72,19 +73,19 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
       document.body.style.overflow = ''
       document.documentElement.style.overflow = ''
       document.body.classList.remove('mega-menu-open')
-      
+
       // Lenis scroll'unu tekrar aktif et
       const lenisInstance = (window as any).lenis
       if (lenisInstance) {
         lenisInstance.start()
       }
     }
-    
+
     return () => {
       document.body.style.overflow = ''
       document.documentElement.style.overflow = ''
       document.body.classList.remove('mega-menu-open')
-      
+
       // Cleanup: Lenis'i tekrar aktif et
       const lenisInstance = (window as any).lenis
       if (lenisInstance) {
@@ -92,7 +93,7 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
       }
     }
   }, [isOpen])
-  
+
   // Header sticky durumunda mega menü pozisyonunu güncelle
   useEffect(() => {
     const updateMenuPosition = () => {
@@ -107,10 +108,10 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
         }
       }
     }
-    
+
     window.addEventListener('scroll', updateMenuPosition)
     window.addEventListener('resize', updateMenuPosition)
-    
+
     return () => {
       window.removeEventListener('scroll', updateMenuPosition)
       window.removeEventListener('resize', updateMenuPosition)
@@ -122,39 +123,37 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
     close: handleClose
   }))
 
+  const toggleMenu = () => {
+    if (isClosing) return // Animasyon sırasında etkileşimi engelle
+
+    if (isOpen) {
+      handleClose()
+    } else {
+      setIsOpen(true)
+    }
+  }
+
   return (
-    <div className="mega-menu">
-      <div>
-        <input 
-          id="checkbox2" 
-          type="checkbox" 
-          checked={isOpen}
-          onChange={(e) => {
-            if (e.target.checked) {
-              setIsOpen(true)
-            } else {
-              handleClose()
-            }
-          }}
-        />
-        <label 
-          className={`toggle toggle2 ${isOpen ? 'active' : ''}`}
-          htmlFor="checkbox2"
-        >
+    <div className="mega-menu" onClick={toggleMenu} style={{ cursor: 'pointer' }}>
+      <div className={`mega-menu-toggle-wrapper ${isOpen ? 'active' : ''}`}>
+        <div className={`toggle toggle2 ${isOpen ? 'active' : ''}`}>
           <div id="bar4" className="bars"></div>
           <div id="bar5" className="bars"></div>
           <div id="bar6" className="bars"></div>
-        </label>
+        </div>
       </div>
       <span className="menu-button_text">{isOpen ? 'KAPAT' : 'MENÜ'}</span>
-      
+
       {isOpen && (
         <>
-          <div 
-            className={`mega-menu-overlay ${isClosing ? 'closing' : ''}`} 
-            onClick={handleClose}
+          <div
+            className={`mega-menu-overlay ${isClosing ? 'closing' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation()
+              handleClose()
+            }}
           ></div>
-          <div 
+          <div
             className={`mega-menu-content ${isClosing ? 'closing' : ''}`}
             onClick={(e) => {
               // Mega menu content'e tıklanınca kapanmasın, sadece overlay'e tıklanınca kapansın
@@ -187,16 +186,16 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
             </div>
             <div className="mega-menu-footer">
               <div className="contact-item">
-                 <span>PHONE</span>
-                 <span>+34 (951) 870-700</span>
+                <span>PHONE</span>
+                <span>+34 (951) 870-700</span>
               </div>
               <div className="contact-item">
-                 <span>EMAIL</span>
-                 <span>INFO@HORIZONTE-VILLAGE.COM</span>
+                <span>EMAIL</span>
+                <span>INFO@HORIZONTE-VILLAGE.COM</span>
               </div>
-               <div className="contact-item">
-                 <span>SOCIALS</span>
-                 <span>FACEBOOK / INSTAGRAM / WHATSAPP</span>
+              <div className="contact-item">
+                <span>SOCIALS</span>
+                <span>FACEBOOK / INSTAGRAM / WHATSAPP</span>
               </div>
             </div>
           </div>

@@ -8,15 +8,16 @@
   background: transparent;
   padding: 2rem 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-serif-stack);
 }
 
 .header-sticky {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: #f8f5eb;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .header-sticky .plain-btn {
@@ -57,6 +58,8 @@
   padding: 0;
   text-shadow: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+  /* Numbers render better in Inter */
 }
 
 .header-sticky .phone-link::before {
@@ -71,8 +74,8 @@
   height: 90%;
   border-radius: 8px;
   transition-duration: 1s;
-  background-color: rgba(255, 255, 255, 0.9);
-  /* Matching the white sticky header */
+  background-color: #f8f5eb;
+  /* Matching the sticky header background */
   background-size: 200%;
   z-index: 1;
 }
@@ -92,11 +95,11 @@
 
 /* Sticky durumda hamburger menü ikonu ve metin siyah olmalı */
 .header-sticky .bars {
-  background-color: #000000;
+  background-color: #39473f;
 }
 
 .header-sticky .menu-button_text {
-  color: #000000;
+  color: #39473f;
   text-shadow: none;
 }
 
@@ -104,7 +107,7 @@
 body.mega-menu-open .header {
   background: #dfd8cf;
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 20px rgba(57, 71, 63, 0.08);
 }
 
 body.mega-menu-open .menu-button_text {
@@ -241,7 +244,7 @@ body.mega-menu-open .header-sticky .header-logo img {
   height: 90%;
   border-radius: 8px;
   transition-duration: 1s;
-  background-color: rgba(0, 0, 0, 0.842);
+  background-color: #39473f;
   background-size: 200%;
 }
 
@@ -295,7 +298,7 @@ body.mega-menu-open .header-sticky .header-logo img {
   height: 90%;
   border-radius: 8px;
   transition-duration: 1s;
-  background-color: rgba(0, 0, 0, 0.842);
+  background-color: #39473f;
   background-size: 200%;
 }
 
@@ -435,6 +438,8 @@ body.mega-menu-open .header-sticky .header-logo img {
   letter-spacing: 0.05em;
   border-bottom: 1px solid transparent;
   padding-bottom: 2px;
+  font-family: 'Inter', sans-serif;
+  /* Fix for broken glyphs in serif font */
 }
 
 .phone-link:hover {

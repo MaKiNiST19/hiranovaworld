@@ -32,7 +32,7 @@
 
 .about-title {
   color: #fff;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-serif-stack);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 400;
   line-height: 1.2;
@@ -131,7 +131,7 @@
 
 .about-modal-title {
   color: #D4AF37;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-serif-stack);
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   letter-spacing: 0.05em;

@@ -5,9 +5,7 @@
   gap: 0.5rem;
 }
 
-#checkbox2 {
-  display: none;
-}
+
 
 .toggle2 {
   position: relative;
@@ -38,33 +36,28 @@
   width: 80%;
 }
 
-#checkbox2:checked+.toggle2 .bars,
 .toggle2.active .bars {
   position: absolute;
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked+.toggle2 #bar5,
 .toggle2.active #bar5 {
   transform: scaleX(0);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked+.toggle2 #bar4,
 .toggle2.active #bar4 {
   width: 100%;
   transform: rotate(45deg);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked+.toggle2 #bar6,
 .toggle2.active #bar6 {
   width: 100%;
   transform: rotate(-45deg);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked+.toggle2,
 .toggle2.active {
   transition-duration: 0.5s;
   transform: rotate(180deg);
@@ -88,13 +81,13 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 99;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.3s ease forwards;
   cursor: pointer;
   pointer-events: auto;
 }
 
 .mega-menu-overlay.closing {
-  animation: fadeOut 0.3s ease;
+  animation: fadeOut 0.3s ease forwards;
 }
 
 .mega-menu-content {
@@ -109,14 +102,14 @@
   z-index: 100;
   display: flex;
   flex-direction: column;
-  animation: slideDown 0.4s ease;
+  animation: slideDown 0.4s ease forwards;
   overflow: hidden;
   pointer-events: auto;
   /* Content'in dışındaki alanlara tıklanabilir olması için */
 }
 
 .mega-menu-content.closing {
-  animation: slideUp 0.4s ease;
+  animation: slideUp 0.4s ease forwards;
 }
 
 .mega-menu-main {
@@ -204,7 +197,7 @@
   cursor: pointer;
   transition-duration: 1s;
   overflow: hidden;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-serif-stack);
   font-size: 0.8125rem;
   font-weight: 300;
   white-space: nowrap;
@@ -271,10 +264,11 @@
   color: #304143;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-serif-stack);
   font-size: 2.5rem;
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   position: relative;
   width: fit-content;
 }

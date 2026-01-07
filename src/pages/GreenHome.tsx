@@ -14,6 +14,7 @@ import NatureRetreat from '../components/NatureRetreat'
 // import TopImages from '../components/TopImages'
 // import GenelPlan from '../components/GenelPlan'
 import Contact from '../components/Contact'
+import Footer from '../components/Footer'
 import Particles from '../components/Particles'
 import { useSmoothScroll } from '../hooks/useSmoothScroll'
 import '../App.css'
@@ -39,6 +40,7 @@ const GreenHome = () => {
             {/* <TopImages /> */}
             {/* <GenelPlan /> */}
             <Contact />
+            <Footer />
             <Particles />
         </div>
     )

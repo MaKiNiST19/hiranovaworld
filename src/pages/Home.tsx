@@ -4,6 +4,7 @@ import './Home.css'
 import Map from '../components/Map'
 import ScrollGallery from '../components/ScrollGallery'
 import Village from '../components/Village'
+import Footer from '../components/Footer'
 
 interface Feature {
     title: string;
@@ -328,6 +329,7 @@ const Home = () => {
             <Map />
             <ScrollGallery />
             <Village />
+            <Footer />
 
             {selectedFeature && (
                 <div className="home-modal-overlay" onClick={closePopup}>

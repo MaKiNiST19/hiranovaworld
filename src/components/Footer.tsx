@@ -42,8 +42,8 @@ const Footer: React.FC = () => {
 
                 {/* Address */}
                 <div className="footer-address">
-                    <p>SAPANCA, SAKARYA</p>
-                    <p>TÜRKİYE</p>
+                    <p>URLA / GÜZELBAHÇE</p>
+                    <p>İZMİR</p>
                 </div>
 
                 {/* Social Media */}

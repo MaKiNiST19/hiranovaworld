@@ -1,8 +1,9 @@
+import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 import Header from '../components/Header'
 import './Home.css'
 import Map from '../components/Map'
-import ScrollGallery from '../components/ScrollGallery'
+import GridGallery from '../components/GridGallery'
 import Village from '../components/Village'
 import Footer from '../components/Footer'
 
@@ -13,71 +14,45 @@ interface Feature {
 }
 
 const Home = () => {
-    const revealRef = useRef<HTMLHeadingElement>(null)
     const sectionRef = useRef<HTMLElement>(null)
     const [selectedFeature, setSelectedFeature] = useState<Feature | null>(null);
     const [activeWorldTab, setActiveWorldTab] = useState(0);
 
     const worldTabs = [
         {
-            label: "HIRANOVA WORLD NEDİR?",
-            title: "DOĞADA YAŞAM VE TATİL HAKKI MODELİ",
-            description: "HiraNova World; doğanın içinde, sakin, düzenli ve yüksek standartlarda tasarlanmış, yaşam ve tatil hakkını bir arada sunan, profesyonelce işletilen özel bir sistemdir.",
-            items: [
-                "Ev satışı yoktur",
-                "Tapu satışı yoktur",
-                "Devre mülk modeli yoktur",
-                "Sunulan hak; rezervasyonlu, dönemli ve planlı kullanım hakkıdır."
-            ],
-            image: "/kazancli-bahce-ev.jpg"
+            label: "Bedenin ve zihnin ritmi.",
+            title: "",
+            description: "HiraNova’da sağlık bir ayrıcalık değil, yaşamın doğal bir parçasıdır. Temiz hava, açık alanlar ve doğayla temas eden bir yaşam düzeni, bedeni yormadan güçlendiren, zihni sakinleştiren bir denge sunar.",
+            items: [],
+            image: "/spor-alani.jpg"
         },
         {
-            label: "SİSTEMİN TEMEL YAPISI",
-            title: "BEŞ DEĞERLİ YAŞAM FELSEFESİ",
-            description: "Beş yıldız değil, beş değerli yaşam. Sağlık • Doğallık • Huzur • Güven • Mutluluk. Öze dönüş HiraNova ile başlıyor.",
-            items: [
-                "Garden ve Suit konseptlerinden oluşan yaşam alanları",
-                "Rezervasyon esaslı kullanım",
-                "Profesyonel işletme ve tek merkezden yönetim",
-                "Kalabalık değil, denge ve huzur odaklı planlama"
-            ],
-            image: "/orman.png"
+            label: "Yapmacık olmayan bir doğa.",
+            title: "",
+            description: "HiraNova, doğanın içine eklenmiş bir proje değil, doğayla birlikte tasarlanmış bir yaşam alanıdır. Açık peyzaj planı, alçak bitki dokusu ve ferah yerleşim sayesinde güneş, rüzgâr ve manzara yaşamın içinde kalır. Burada doğa bir dekor değil, gündelik hayatın parçasıdır.",
+            items: [],
+            image: "/ferah-ortam.jpg"
         },
         {
-            label: "KULLANIM HAKKI & KAPASİTE",
-            title: "5 YILLIK KULLANIM HAKKI",
-            description: "Katılımcılara 5 yıl süreyle kullanım hakkı tanımlanır. Her yıl yaz ve kış dönemlerinde konaklama imkanı sunulur.",
-            items: [
-                "Toplam bağımsız konaklama birimi: 36",
-                "18 Garden – 18 Suit",
-                "Aynı anda maksimum 36 aile konaklar."
-            ],
-            image: "/logo-hira.png"
+            label: "Sessizlik bir lüks olduğunda.",
+            title: "",
+            description: "HiraNova’da günler acele etmez. Kalabalık yok, gürültü yok, zorunlu tempo yok. Açık hava sinema terası, sakin yürüyüş alanları ve doğayla çevrili sosyal alanlar, insanın kendini dinleyebileceği bir ortam yaratır. Burası kaçmak için değil, durabilmek için tasarlandı.",
+            items: [],
+            image: "/sinema-ortami.jpg"
         },
         {
-            label: "YAZ DÖNEMİ PLANLAMASI",
-            title: "YAZ TAKVİMİ: 1 HAZİRAN – 30 EYLÜL",
-            description: "Yaz dönemi 4 ay (15 günlük bloklar) olarak planlanmıştır. Toplam yaz kapasitesi: 288 aile.",
-            items: [
-                "1–15 Haziran / 16–30 Haziran",
-                "1–15 Temmuz / 16–31 Temmuz",
-                "1–15 Ağustos / 16–31 Ağustos",
-                "1–15 Eylül / 16–30 Eylül"
-            ],
-            image: "/garden-world-1.png"
+            label: "Rahat hissetmenin temeli.",
+            title: "",
+            description: "HiraNova, kontrollü giriş sistemi ve düzenli yaşam kurgusuyla aileler için güvenli bir ortam sunar. Çocuklar özgürce oynarken, ebeveynler gözleri arkada kalmadan günü yaşar. Güven burada görünmez ama hissedilir.",
+            items: [],
+            image: "/cocuk-parki.jpg"
         },
         {
-            label: "KIŞ DÖNEMİ PLANLAMASI",
-            title: "KIŞ TAKVİMİ: 1 KASIM – 31 MART",
-            description: "Kış dönemi de 15 günlük bloklar halinde planlanır. Aynı anda en fazla 36 aile konaklar.",
-            items: [
-                "1–15 Kasım / 16–30 Kasım",
-                "1–15 Aralık / 16–31 Aralık",
-                "1–15 Ocak / 16–31 Ocak",
-                "1–15 Şubat / 16–28 Şubat",
-                "1–15 Mart / 16–31 Mart"
-            ],
-            image: "/suit-world-1.png"
+            label: "Paylaşılan anlarda saklı.",
+            title: "",
+            description: "Mutluluk büyük vaatlerde değil, küçük anlarda ortaya çıkar. Ailece yapılan kahvaltılar, birlikte izlenen bir film, doğada geçirilen sade bir gün… HiraNova, bu anların çoğalabileceği bir yaşam düzeni sunar.",
+            items: [],
+            image: "/gallery-4.png"
         }
     ];
 
@@ -143,28 +118,10 @@ const Home = () => {
                 sectionRef.current.style.paddingRight = `${paddingValue}px`;
             }
 
-            // 2. Text Opacity Scrubbing (Cumulative Section Scroll)
-            if (revealRef.current) {
-                const chars = revealRef.current.querySelectorAll('.char');
-                // Calculate section progress specifically for text reveal
-                // Start reveal when section top is at 70% viewport, end at 30%
-                const revealStart = windowHeight * 0.7;
-                const revealEnd = windowHeight * 0.2;
-                const sectionVisibleHeight = revealStart - revealEnd;
-                const currentPos = rect.top;
-
-                let textProgress = (revealStart - currentPos) / sectionVisibleHeight;
-                textProgress = Math.max(0, Math.min(1, textProgress));
-
-                chars.forEach((char, index) => {
-                    // Stagger characters across the textProgress
-                    const charThreshold = index / chars.length;
-                    const charProgress = (textProgress - charThreshold) * 5; // Reveal speed multiplier
-
-                    let opacity = 0.2 + Math.max(0, Math.min(0.8, charProgress * 0.8));
-                    (char as HTMLElement).style.opacity = opacity.toString();
-                });
-            }
+            // 2. Text Opacity Scrubbing (Removed - using Framer Motion)
+            /* 
+               Legacy manual scrub removed in favor of whileInView
+            */
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -188,7 +145,7 @@ const Home = () => {
                     muted
                     playsInline
                 >
-                    <source src="/vidhero.mp4" type="video/mp4" />
+                    <source src="/herovideo.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                 <div className="hero-overlay"></div>
@@ -199,7 +156,7 @@ const Home = () => {
             </section>
 
             {/* Info Section */}
-            <section className="info-section" ref={sectionRef}>
+            <section className="info-section" id="about" ref={sectionRef}>
                 <div className="info-section-inner">
                     {/* Background Images */}
                     <div className="bg-image image-bottom-left">
@@ -218,22 +175,39 @@ const Home = () => {
                             <span className="dot">•</span>
                             <span>Orman İçinde</span>
                             <span className="dot">•</span>
-                            <span>Yapay Zekâ Destekli Doğal Yaşam Hikâyesi</span>
+                            <span>Sakin ve nitelikli bir yaşam</span>
                         </div>
 
-                        <h2 className="reveal-text" ref={revealRef}>
-                            {"Doğayla İç İçe Nitelikli Bir Yaşam Vadediyor.".split("").map((char, index) => (
-                                <span key={index} style={{ transitionDelay: `${index * 30}ms` }} className="char">
-                                    {char === " " ? "\u00A0" : char}
+                        <h2 className="reveal-text">
+                            {"Doğayla iç içe, Benzersiz Bir Deneyim".split(" ").map((word, i) => (
+                                <span key={i} style={{ display: 'inline-block', whiteSpace: 'nowrap', marginRight: '0.2em' }}>
+                                    {word.split("").map((char, index) => (
+                                        <motion.span
+                                            key={index}
+                                            initial={{ opacity: 0.2 }}
+                                            whileInView={{ opacity: 1 }}
+                                            viewport={{ once: false, margin: "-10%" }}
+                                            transition={{
+                                                duration: 0.5,
+                                                delay: (i * 5 + index) * 0.05,
+                                                ease: "easeOut"
+                                            }}
+                                            className="char"
+                                        >
+                                            {char}
+                                        </motion.span>
+                                    ))}
                                 </span>
                             ))}
                         </h2>
 
                         <p className="info-description">
-                            HiraNova World bir site değildir. Bir ev projesi hiç değildir.
+                            Burası bir otelden fazlası.
                         </p>
                         <p className="info-description-secondary">
-                            Burası; denize çok yakın, orman içinde konumlanan; doğayla, teknolojiyle ve insanla uyumlu bir yaşam dünyasıdır.
+                            Burası; denize çok yakın, ormanın içinde konumlanan,
+                            doğayla, insanla ve modern yaşamla uyumlu
+                            özel bir yaşam dünyası.
                         </p>
 
                         <div className="info-buttons">
@@ -258,20 +232,20 @@ const Home = () => {
                 </div>
                 <div className="residence-container">
                     <div className="residence-text">
-                        <span className="residence-tag">REZİDANSLAR</span>
-                        <h2 className="residence-title">FERAH YAŞAYIN<br />GÜZEL YAŞAYIN</h2>
+                        <span className="residence-tag">Villalar</span>
+                        <h2 className="residence-title">FERAH YAŞAYIN<br />SAKİN YAŞAYIN</h2>
 
                         <div className="residence-divider"></div>
 
                         <p className="residence-description">
-                            AYDINLIK VE GENİŞ YAŞAM ALANLARI. ŞIK VE MODERN MUTFAKLAR.
-                            GÜNE TAZE BİR BAŞLANGIÇ YAPMANIZI SAĞLAYACAK SPA TADINDA BANYOLAR.
-                            HIRANOVA WORLD'DE HER DETAY, EVİNİZİ EN SEVDİĞİNİZ YER YAPMAK İÇİN TASARLANDI.
+                            Aydınlık ve geniş yaşam alanları, gün ışığını içeri alan yüksek pencereler, doğayla uyumlu malzemeler…
+                            HiraNova villalarında her detay, günü yavaşlatan bir konfor için tasarlandı. Şık ve işlevsel mutfaklar, uzun günlerin yorgunluğunu alan spa hissindeki banyolar, iç mekânla dış mekânı birbirine bağlayan teraslar…
+                            Burası yalnızca konaklayacağınız bir yer değil, kendinizi en çok evinizde hissettiğiniz alan.
                         </p>
                         <button className="residence-button"></button>
                     </div>
                     <div className="residence-image">
-                        <img src="/kazancli-bahce-ev.jpg" alt="Residence" />
+                        <img src="/gallery-2.png" alt="Residence" />
                     </div>
                 </div>
             </section>
@@ -282,13 +256,14 @@ const Home = () => {
                     <div className="world-header">
                         <span className="world-tag">HIRANOVA WORLD</span>
                         <h2 className="world-main-title">
-                            <span className="text-outline">GARDEN | SUIT</span><br />
-                            BEŞ DEĞERLİ YAŞAM.
+                            <span className="text-outline">SUIT & VİLLALARDA</span><br />
+                            DEĞERLİ YAŞAM.
                         </h2>
                         <div className="world-subtitle-row">
                             <p className="world-header-desc">
-                                SAĞLIK • DOĞALLIK • HUZUR • GÜVEN • MUTLULUK<br />
-                                ÖZE DÖNÜŞ HIRANOVA İLE BAŞLIYOR.
+                                HiraNova World, yalnızca bir konaklama deneyimi sunmaz.
+                                Sağlık, doğallık, huzur, güven ve mutluluk üzerine kurulu bütüncül bir yaşam anlayışı önerir. Her detay; bedeni, zihni ve gündelik yaşamı
+                                daha dengeli ve nitelikli hale getirmek için tasarlandı.
                             </p>
                             <button className="world-discover-btn"></button>
                         </div>
@@ -327,7 +302,7 @@ const Home = () => {
             </section>
 
             <Map />
-            <ScrollGallery />
+            <GridGallery />
             <Village />
             <Footer />
 

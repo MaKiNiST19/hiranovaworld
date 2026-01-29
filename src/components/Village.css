@@ -118,17 +118,19 @@
 
 .village-cta::before {
   position: absolute;
-  content: "Bana Uygun mu?";
+  content: "Rezervasyon";
   color: #ffd277;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 97%;
+  width: 100%;
   height: 90%;
   border-radius: 8px;
   transition-duration: 1s;
   background-color: rgba(0, 0, 0, 0.842);
   background-size: 200%;
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
 .village-cta:active {

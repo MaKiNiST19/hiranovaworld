@@ -1,0 +1,210 @@
+.suits-page {
+    background-color: #F9F7F2;
+    /* Cream/Off-white background from image */
+    color: #39473f;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Typography */
+.suits-serif-title {
+    font-family: var(--font-serif-stack);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: inherit;
+}
+
+.suits-text-content p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* Sections */
+.suits-section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.suits-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.suits-hero {
+    padding-top: 120px;
+    /* Accounts for header */
+    padding-bottom: 4rem;
+    text-align: center;
+}
+
+.suits-hero-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.suits-hero-title span {
+    display: block;
+}
+
+.suits-hero-subtitle {
+    color: #C17D5F;
+    /* Terracotta/Reddish accent */
+    font-style: italic;
+    font-family: var(--font-serif-stack);
+}
+
+.suits-hero-image-wrapper {
+    margin-top: 3rem;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.suits-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Intro Text Section */
+.suits-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+.suits-intro-text {
+    font-family: var(--font-serif-stack);
+    font-size: 2rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: #8A9A8A;
+    /* Muted Green */
+}
+
+.suits-intro-text strong {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Feature Sections (Checkerboard) */
+.suits-feature {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 2rem;
+}
+
+.suits-feature.reverse {
+    flex-direction: row-reverse;
+}
+
+.suits-feature-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.suits-feature-image {
+    flex: 1.2;
+    position: relative;
+}
+
+.suits-feature-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.suits-section-title-wrapper {
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.suits-section-title-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 1px;
+    height: 40px;
+    background-color: #ccc;
+}
+
+.suits-feature.reverse .suits-section-title-wrapper::before {
+    left: auto;
+    right: 0;
+}
+
+
+.suits-section-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+/* Background Colors for Sections */
+.bg-dark-green {
+    background-color: #2F3E35;
+    color: #fff;
+}
+
+.bg-dark-green .suits-text-content p {
+    color: #ccc;
+}
+
+.bg-dark-green .suits-section-title-wrapper::before {
+    background-color: #555;
+}
+
+.bg-terracotta {
+    background-color: #9E5E42;
+    color: #fff;
+}
+
+.bg-terracotta .suits-text-content p {
+    color: #f0f0f0;
+}
+
+.bg-terracotta .suits-section-title-wrapper::before {
+    background-color: #ccc;
+}
+
+/* Decorative Elements */
+.suits-leaf-bg {
+    position: absolute;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+
+    .suits-feature,
+    .suits-feature.reverse {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .suits-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .suits-intro-text {
+        font-size: 1.5rem;
+    }
+
+    .suits-section {
+        padding: 3rem 0;
+    }
+}

@@ -11,20 +11,16 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
 
   const menuItems = [
     {
-      title: 'Proje Hakkında',
-      link: '#about'
+      title: 'Hotel hakkında',
+      link: '/about'
     },
     {
-      title: 'Villalar',
-      link: '#villas'
-    },
-    {
-      title: 'Yatırımcılar İçin',
-      link: '#investors'
+      title: 'Villalar ve Suitler',
+      link: '/suits-and-villas'
     },
     {
       title: 'İletişim',
-      link: '#contact'
+      link: '/contact'
     }
   ]
 
@@ -34,14 +30,35 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
     setTimeout(() => {
       setIsOpen(false)
       setIsClosing(false)
-    }, 450) // Animasyon süresinden (400ms) biraz daha uzun olmalı
+    }, 450)
   }
 
   const handleMenuClick = (link: string) => {
     handleClose()
-    const element = document.querySelector(link)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (link.startsWith('/')) {
+      // If it's a root anchor like /#about
+      if (link.includes('#')) {
+        const [path, hash] = link.split('#');
+        if (window.location.pathname === path || (path === '/' && window.location.pathname === '')) {
+          const element = document.getElementById(hash);
+          if (element) element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.href = link;
+        }
+      } else {
+        // Normal route
+        window.location.href = link;
+      }
+    } else {
+      // Anchor only
+      const element = document.querySelector(link)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        // Fallback if element not found on current page (e.g. #about on Suits page)
+        // Go to home + hash
+        window.location.href = '/' + link;
+      }
     }
   }
 
@@ -163,7 +180,7 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
             <div className="mega-menu-main">
               <div className="mega-menu-left">
                 <nav className="mega-menu-nav">
-                  {menuItems.map((item, index) => (
+                  {menuItems.filter(item => item.title !== 'Villalar ve Suitler').map((item, index) => (
                     <a
                       key={index}
                       href={item.link}
@@ -180,18 +197,18 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
               </div>
               <div className="mega-menu-right">
                 <div className="mega-menu-image">
-                  <button className="genplan-btn" onClick={() => console.log('Genel Plan')}></button>
+                  {/* Button removed as requested */}
                 </div>
               </div>
             </div>
             <div className="mega-menu-footer">
               <div className="contact-item">
                 <span>PHONE</span>
-                <span>+34 (951) 870-700</span>
+                <span>+90 (232) 000 00 00</span>
               </div>
               <div className="contact-item">
                 <span>EMAIL</span>
-                <span>INFO@HORIZONTE-VILLAGE.COM</span>
+                <span>info@hiranovaworld.com</span>
               </div>
               <div className="contact-item">
                 <span>SOCIALS</span>

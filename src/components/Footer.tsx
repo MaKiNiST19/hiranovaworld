@@ -3,12 +3,8 @@ import './Footer.css'
 
 const Footer: React.FC = () => {
     const navigationLinks = [
-        { label: 'ANA SAYFA', href: '#hero' },
-        { label: 'YAŞAM MODELLERİ', href: '#life-models' },
-        { label: 'DÜNYA', href: '#world-selector' },
-        { label: 'KONUM', href: '#map' },
-        { label: 'GALERİ', href: '#life-gallery' },
-        { label: 'İLETİŞİM', href: '#contact' },
+        { label: 'HOTEL HAKKINDA', href: '/about' },
+        { label: 'İLETİŞİM', href: '/contact' },
     ]
 
     const legalLinks = [

@@ -18,9 +18,20 @@ const About: React.FC = () => {
         "💧 Yağmur suyu geri kazanımı ile su döngüsünü korur",
         "♻️ Kompost sistemi ile atıkları toprağa geri kazandırır",
         "🌬️ Doğal havalandırma ile temiz atmosfer ve yüksek oksijen sağlar",
-        "🍃 Ağaçların yaydığı fitonsitler bağışıklığı güçlendirir",
-        "🌿 Toprakla temas bedenin dengesini ve ruhun huzurunu geri kazandırır",
-        "💧 Doğal nem ve ışık döngüsü sağlıklı bir yaşamın en saf halini sunar"
+        "📍 İzmir Urla Güzelbahçe'de, orman içinde tepe konumu",
+        "🏡 18 Dönüm Arazi, 80 Villa Tipi Oda (Suit ve Bahçeli)"
+      ]
+    },
+    {
+      title: "Zengin Sosyal Olanaklar",
+      items: [
+        "🎬 Açık Hava Sinema Terası",
+        "swimming_pool Ortak Yüzme Havuzu", // using text fallback if icon not avail
+        "🐎 At Binme Alanı ve Çiftlik",
+        "🏎️ ATV Parkuru",
+        "🧖‍♀️ SPA, Sauna ve Türk Hamamı",
+        "🎾 Tenis Kortu ve Basketbol Sahası",
+        "playground Çocuk Parkı"
       ]
     },
     {

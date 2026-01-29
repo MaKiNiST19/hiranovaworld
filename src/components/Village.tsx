@@ -8,21 +8,19 @@ const Village: React.FC = () => {
       <div className="village-content">
         <div className="village-text-box">
           <p className="village-kicker">HiraNova</p>
-          <h3 className="village-title">Garden &amp; Suites</h3>
+          <h3 className="village-title">Suit &amp; Villa Otel</h3>
           <p className="village-body">
-            Saf doğa, akıllı konfor ve kira stresi olmadan planlı bir yaşam.
-            HiraNova, doğayla uyumlu ve sınırlı sayıda katılımcıyla ilerleyen bir yaşam modelidir.
-            Herkese uygun değildir.
+            Bahçeli villalar ve suit üniteler;
+sessizlik, konfor ve mahremiyet arayan misafirler için tasarlandı.
+Kalabalık tesis anlayışından uzak, her detayı düşünülmüş bir konaklama düzeniyle
+tatilinizi aceleye getirmeden yaşamanıza olanak tanır.
           </p>
           <p className="village-footnote">
-            “HiraNova herkese açık bir proje değildir.”
+            “Urla–Güzelbahçe hattında, doğanın içinde konumlanmış özel bir otel deneyimi sunar.”
           </p>
          <button className="village-cta">
-            Bana Uygun mu?
+            Rezervasyon Yap!
           </button>
-          <p className="village-note">
-         (2 dakikalık ön değerlendirme)
-          </p>
         </div>
       </div>
     </section>

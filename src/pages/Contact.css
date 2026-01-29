@@ -1,0 +1,221 @@
+.contact-page {
+    background-color: #F9F7F2;
+    color: #39473f;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-main {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    min-height: 80vh;
+    /* Occupy most of the screen */
+}
+
+/* Split Layout */
+.contact-split {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Left Side - Info */
+.contact-info-side {
+    flex: 1;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Center horizontally */
+    text-align: center;
+    border-right: 1px solid #e0e0e0;
+    position: relative;
+}
+
+.contact-info-side::before {
+    /* Decorative leaf - conceptual placeholder */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-image: url('/blacker/leaf-sketch.png');
+    /* Assuming we might have a similar asset or remove if none */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.contact-pretitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.contact-title {
+    font-family: 'Blacker Sans Display', serif;
+    /* Matching existing serif font */
+    font-size: 4rem;
+    font-weight: 300;
+    color: #39473f;
+    margin-bottom: 4rem;
+    line-height: 1.1;
+}
+
+.contact-description {
+    max-width: 400px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.contact-icon-circle {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #39473f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #39473f;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-icon-circle:hover {
+    background-color: #39473f;
+    color: #fff;
+}
+
+/* Right Side - Form */
+.contact-form-side {
+    flex: 1;
+    padding: 4rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F9F7F2;
+}
+
+.contact-form {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    flex: 1;
+    position: relative;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-bottom-color: #39473f;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.form-select {
+    cursor: pointer;
+    appearance: none;
+    /* Custom arrow if needed */
+}
+
+/* Custom Select Arrow */
+.form-group-select::after {
+    content: '▼';
+    font-size: 0.6rem;
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    color: #666;
+    pointer-events: none;
+}
+
+.submit-btn {
+    background-color: #A65D46;
+    /* Terracotta/Reddish accent from button in image */
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+    display: inline-block;
+    float: right;
+    /* Or conceptual placement */
+}
+
+.submit-btn:hover {
+    background-color: #8a4a35;
+}
+
+@media (max-width: 1024px) {
+    .contact-split {
+        flex-direction: column;
+    }
+
+    .contact-info-side {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 3rem 1rem;
+    }
+
+    .contact-form-side {
+        padding: 3rem 1rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

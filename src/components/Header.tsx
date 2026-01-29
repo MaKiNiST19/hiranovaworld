@@ -26,16 +26,7 @@ const Header: React.FC = () => {
     }
   }
 
-  const handleGeneralPlan = () => {
-    console.log('Genel Plan')
-  }
 
-  const handleFounderPartnership = () => {
-    const investorsSection = document.getElementById('investors')
-    if (investorsSection) {
-      investorsSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
 
   const handleLogoClick = () => {
     // Mega menü açıksa kapat
@@ -69,23 +60,17 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className={`header ${isSticky ? 'header-sticky' : ''}`}>
+    <header className={`header ${isSticky || window.location.pathname !== '/' ? 'header-sticky' : ''}`}>
       <div className="header-container">
         {/* Sol taraf */}
         <div className="header-left">
           <MegaMenu ref={megaMenuRef} />
-          <button className="reservation-btn" onClick={handleReservation}>
-            Rezervasyon Yap
-          </button>
-          <button className="general-plan-btn" onClick={handleGeneralPlan}>
-            Genel Plan
-          </button>
         </div>
 
         {/* Orta - Logo (Sticky durumuna göre değişir) */}
         <div className="header-center">
           <div id="header-logo" className="header-logo-permanent" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
-            <img src={isSticky ? "/hira-nova-logo.png" : "/beyaz-logo.png"} alt="HiraNova" />
+            <img src={(isSticky || window.location.pathname !== '/') ? "/hira-nova-logo.png" : "/beyaz-logo.png"} alt="HiraNova" />
           </div>
         </div>
 
@@ -94,8 +79,8 @@ const Header: React.FC = () => {
           <a href={`tel:${CONTACT_INFO.whatsapp}`} className="phone-link">
             {CONTACT_INFO.phoneDisplay}
           </a>
-          <button className="founder-partnership-btn" onClick={handleFounderPartnership}>
-            Kurucu Ortaklık
+          <button className="reservation-btn" onClick={handleReservation}>
+            Rezervasyon Yap
           </button>
         </div>
       </div>

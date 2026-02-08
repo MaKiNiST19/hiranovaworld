@@ -110,6 +110,21 @@ body.mega-menu-open .header {
   box-shadow: 0 2px 20px rgba(57, 71, 63, 0.08);
 }
 
+/* Light pages (Suits, Villas) top state: dark elements on transparent bg */
+.header-at-top-light .bars {
+  background-color: #39473f;
+}
+
+.header-at-top-light .menu-button_text {
+  color: #39473f;
+  text-shadow: none;
+}
+
+.header-at-top-light .phone-link {
+  color: #39473f;
+  text-shadow: none;
+}
+
 body.mega-menu-open .menu-button_text {
   color: #000000;
 }

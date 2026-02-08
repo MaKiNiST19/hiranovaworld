@@ -26,7 +26,17 @@ const Header: React.FC = () => {
     }
   }
 
+  const location = window.location.pathname
+  const isLightPage = ['/suits', '/villas', '/suits-and-villas', '/facility'].includes(location)
+  const isHomePage = location === '/' || location === '' || location === '/index.html'
 
+  // Header should be transparent/non-sticky at top for Home, Suits, Villas, SuitsAndVillas
+  const isTransparentAtTop = isHomePage || isLightPage
+  const currentHeaderSticky = isSticky || !isTransparentAtTop
+
+  // Handle Logo selection
+  // Use dark logo if sticky OR if on a light-background page (where background is light at top)
+  const useDarkLogo = currentHeaderSticky || isLightPage
 
   const handleLogoClick = () => {
     // Mega menü açıksa kapat
@@ -34,11 +44,6 @@ const Header: React.FC = () => {
     if (isMegaMenuOpen && megaMenuRef.current) {
       megaMenuRef.current.close()
     }
-
-    // Anasayfada mıyız kontrol et
-    const isHomePage = window.location.pathname === '/' ||
-      window.location.pathname === '/index.html' ||
-      window.location.pathname === ''
 
     if (isHomePage) {
       const lenisInstance = (window as any).lenis
@@ -60,7 +65,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className={`header ${isSticky || window.location.pathname !== '/' ? 'header-sticky' : ''}`}>
+    <header className={`header ${currentHeaderSticky ? 'header-sticky' : ''} ${isLightPage && !isSticky ? 'header-at-top-light' : ''}`}>
       <div className="header-container">
         {/* Sol taraf */}
         <div className="header-left">
@@ -70,7 +75,7 @@ const Header: React.FC = () => {
         {/* Orta - Logo (Sticky durumuna göre değişir) */}
         <div className="header-center">
           <div id="header-logo" className="header-logo-permanent" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
-            <img src={(isSticky || window.location.pathname !== '/') ? "/hira-nova-logo.png" : "/beyaz-logo.png"} alt="HiraNova" />
+            <img src={useDarkLogo ? "/hira-nova-logo.png" : "/beyaz-logo.png"} alt="HiraNova" />
           </div>
         </div>
 
@@ -89,4 +94,3 @@ const Header: React.FC = () => {
 }
 
 export default Header
-

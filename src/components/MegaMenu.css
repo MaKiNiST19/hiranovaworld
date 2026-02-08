@@ -136,6 +136,185 @@
   }
 }
 
+.mega-menu-main {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mega-menu-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 4rem;
+}
+
+.mega-menu-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.mega-menu-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(48, 65, 67, 0.2) 0%, rgba(26, 42, 43, 0.3) 100%),
+    url('/villalar.jpg') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mega-menu-footer {
+  height: 10vh;
+  min-height: 80px;
+  background-color: #d4cbbd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #304143;
+  border-top: 1px solid rgba(48, 65, 67, 0.1);
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contact-item span:first-child {
+  font-family: var(--font-serif-stack);
+  font-weight: 600;
+  font-size: 1.1rem;
+  opacity: 1;
+  color: #1a1a1a;
+  letter-spacing: 0.1em;
+}
+
+.contact-item span:last-child {
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+}
+
+/* Genel Plan Butonu */
+.genplan-btn {
+  width: 140px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #dfd8cf;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  font-family: var(--font-serif-stack);
+  font-size: 0.8125rem;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+  z-index: 2;
+}
+
+.genplan-btn::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background-size: 250%;
+  background-position: left;
+  border-radius: 10px;
+  z-index: -2;
+  transition-duration: 1s;
+}
+
+.genplan-btn::before {
+  position: absolute;
+  content: "Genel Plan";
+  color: #dfd8cf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: transparent;
+  background-size: 200%;
+  z-index: -1;
+}
+
+.genplan-btn:hover::after,
+.genplan-btn:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.genplan-btn:active {
+  transform: scale(0.95);
+}
+
+.mega-menu-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  height: 100%;
+  text-align: center;
+}
+
+.mega-menu-item {
+  display: block;
+  color: #304143;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: var(--font-serif-stack);
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  width: fit-content;
+}
+
+.mega-menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #304143;
+  transition: width 0.3s ease;
+}
+
+.mega-menu-item:hover {
+  opacity: 0.7;
+}
+
+.mega-menu-item:hover::after {
+  width: 100%;
+}
+
 @media (max-width: 1024px) {
   .mega-menu-left {
     padding: 0 0 0 3rem;

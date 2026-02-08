@@ -1,74 +1,57 @@
 import React from 'react'
 import './Footer.css'
+import { Link } from 'react-router-dom'
 
 const Footer: React.FC = () => {
+    // Main navigation links styled like the example
     const navigationLinks = [
-        { label: 'HOTEL HAKKINDA', href: '/about' },
+        { label: 'ANASAYFA', href: '/' },
+        { label: 'SUİTLER & VİLLALAR', href: '/suits' },
+        { label: 'OTEL HAKKINDA', href: '/about' },
+        { label: 'ULAŞIM & ÇEVRE', href: '/location' },
         { label: 'İLETİŞİM', href: '/contact' },
-    ]
-
-    const legalLinks = [
-        { label: 'GİZLİLİK POLİTİKASI', href: '#' },
-        { label: 'ŞARTLAR VE KOŞULLAR', href: '#' },
-        { label: 'KVKK', href: '#' },
     ]
 
     return (
         <footer className="footer-section">
-            {/* Decorative leaf pattern overlay */}
-            <div className="footer-leaf-pattern"></div>
+            {/* Background Decorative Elements */}
+            <div className="footer-bg-overlay"></div>
 
-            <div className="footer-container">
-                {/* Logo */}
-                <div className="footer-logo-wrapper">
-                    <img src="/beyaz-logo.png" alt="HiraNova" className="footer-logo" />
+            <div className="footer-content">
+                {/* Logo Section */}
+                <div className="footer-logo-container">
+                    {/* Circle P Logo Style Placeholder */}
+                    <div className="footer-circle-logo">
+                        <img src="/beyaz-logo.png" alt="HiraNova" />
+                    </div>
                 </div>
 
-                {/* Navigation Links */}
-                <nav className="footer-nav">
+                {/* Main Navigation Links */}
+                <nav className="footer-main-nav">
                     {navigationLinks.map((link, index) => (
-                        <a key={index} href={link.href} className="footer-nav-link">
+                        <Link
+                            key={index}
+                            to={link.href}
+                            className="footer-link-item"
+                        >
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
                 </nav>
 
-                {/* Vertical Divider Line */}
-                <div className="footer-divider"></div>
+                {/* Vertical Divider */}
+                <div className="footer-divider-line"></div>
 
-                {/* Address */}
-                <div className="footer-address">
+                {/* Address Info */}
+                <div className="footer-info-text">
                     <p>URLA / GÜZELBAHÇE</p>
-                    <p>İZMİR</p>
+                    <p>İZMİR, TÜRKİYE</p>
                 </div>
+            </div>
 
-                {/* Social Media */}
-                <div className="footer-social">
-                    <a href="https://instagram.com/hiranova" target="_blank" rel="noopener noreferrer" className="footer-social-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                </div>
-
-                {/* Legal Links */}
-                <div className="footer-legal">
-                    {legalLinks.map((link, index) => (
-                        <React.Fragment key={index}>
-                            <a href={link.href} className="footer-legal-link">
-                                {link.label}
-                            </a>
-                            {index < legalLinks.length - 1 && <span className="footer-legal-separator">|</span>}
-                        </React.Fragment>
-                    ))}
-                </div>
-
-                {/* Copyright */}
-                <div className="footer-copyright">
-                    <p>© 2025 HiraNova. Tüm hakları saklıdır.</p>
-                </div>
+            {/* Side Tab (Optional Book A Tour) */}
+            <div className="footer-side-tab">
+                <span>REZERVASYON YAP</span>
             </div>
         </footer>
     )

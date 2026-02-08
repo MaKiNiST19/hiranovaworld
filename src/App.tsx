@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import GreenHome from './pages/GreenHome'
 import SuitsAndVillas from './pages/SuitsAndVillas'
+import Suits from './pages/Suits'
+import Villas from './pages/Villas'
 import Contact from './pages/Contact'
 import AboutHotel from './pages/AboutHotel'
 import Facility from './pages/Facility'
@@ -18,6 +20,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/greenhome" element={<GreenHome />} />
                 <Route path="/suits-and-villas" element={<SuitsAndVillas />} />
+                <Route path="/suits" element={<Suits />} />
+                <Route path="/villas" element={<Villas />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/about" element={<AboutHotel />} />
                 <Route path="/facility" element={<Facility />} />

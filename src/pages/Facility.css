@@ -1,0 +1,26 @@
+.facility-page {
+    background-color: #f8f5eb;
+    color: #39473f;
+    min-height: 100vh;
+}
+
+.facility-page .hero-section {
+    height: 60vh;
+    background-color: #2d3b33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.facility-page .hero-content h1 {
+    font-family: var(--font-serif-stack);
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.facility-page .content-section {
+    padding: 4rem 0;
+    text-align: center;
+}

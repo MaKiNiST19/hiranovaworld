@@ -590,6 +590,8 @@
     padding: 10rem 0;
     background-color: #f8f5eb;
     color: #39473f;
+    overflow: visible;
+    /* Allow image to overlap upwards if needed */
 }
 
 .world-container {
@@ -601,7 +603,10 @@
 }
 
 .world-header {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+    /* Reduced to pull content up */
+    position: relative;
+    z-index: 2;
 }
 
 .world-tag {
@@ -629,8 +634,11 @@
 .world-subtitle-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    /* Changed to start */
     gap: 4rem;
+    position: relative;
+    /* Context for absolute button */
 }
 
 .world-header-desc {
@@ -639,69 +647,72 @@
     letter-spacing: 0.05em;
     opacity: 1;
     margin: 0;
-    max-width: 700px;
+    max-width: 600px;
 }
 
+/* Primary Button Style for Discover Button */
 .world-discover-btn {
-    width: 220px;
-    height: 50px;
+    width: 260px;
+    /* Slightly wider */
+    height: 55px;
     border: none;
     border-radius: 10px;
-    background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
-    background-size: 250%;
-    background-position: left;
-    color: #ffd277;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition-duration: 1s;
-    overflow: hidden;
-    font-size: 0.8125rem;
-    font-weight: 300;
-    white-space: nowrap;
-    letter-spacing: 0.08em;
+    background: linear-gradient(135deg, #77530a 0%, #D4AF37 50%, #77530a 100%);
+    background-size: 200% auto;
+    color: #fff;
+    font-size: 0.95rem;
+    /* Slightly larger text */
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0;
+    cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    align-self: flex-start;
-}
-
-.world-discover-btn::before {
-    position: absolute;
-    content: "SİSTEMİ KEŞFEDİN | →";
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 97%;
-    height: 92%;
-    border-radius: 8px;
-    transition-duration: 1s;
-    background-color: #f8f5eb;
-    /* Matching section background */
-    z-index: 1;
+
+    /* Absolute positioning relative to world-subtitle-row or container */
+    position: absolute;
+    top: -120px;
+    /* Adjust based on new image height */
+    right: 0;
+    z-index: 50;
+    /* High z-index to be on top */
 }
 
 .world-discover-btn:hover {
-    background-position: right;
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
 .world-discover-btn:active {
-    transform: scale(0.95);
+    transform: scale(0.98);
+}
+
+/* Override previous button pseudo-elements if any from copy-paste */
+.world-discover-btn::before {
+    display: none;
 }
 
 .world-content-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
+    /* Increased left column width, decreased right */
     gap: 4rem;
     align-items: start;
+    margin-top: 0;
+    /* Reduced margin */
 }
 
 .world-tabs {
     display: flex;
     flex-direction: column;
     border-top: 1px solid rgba(57, 71, 63, 0.1);
+    padding-top: 2rem;
+    margin-top: 0;
+    /* Removed top margin to pull tabs up */
 }
 
 .world-tab-item {
@@ -713,7 +724,7 @@
     gap: 1.5rem;
     transition: all 0.4s ease;
     position: relative;
-    padding-left: 2rem;
+    padding-left: 1rem;
     color: #39473f;
 }
 
@@ -726,19 +737,23 @@
 }
 
 .world-tab-item .tab-label {
-    font-family: var(--font-serif-stack);
-    font-size: 1.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     opacity: 1;
     /* Made fully opaque for legibility */
-    font-weight: 400;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .world-tab-item.active {
-    background-color: #39473f;
-    color: #ffffff;
-    padding-left: 3rem;
+    background-color: transparent;
+    /* Clean look */
+    color: #77530a;
+    /* Active color */
+    padding-left: 2rem;
+    border-bottom: 1px solid #77530a;
 }
 
 .world-tab-item.active .tab-label {
@@ -751,22 +766,38 @@
 }
 
 .world-tab-item:not(.active):hover {
-    padding-left: 3rem;
+    padding-left: 2rem;
     opacity: 0.8;
 }
 
+/* Updated World Display - Card Style */
 .world-display {
     position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    height: 550px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 600px;
+    /* Adjusted width */
+    margin-left: auto;
+    margin-top: -300px;
+    /* Significant negative margin upwards */
+    z-index: 10;
+    background: transparent;
+    /* Transparent bg */
+    box-shadow: none;
+    /* Removed box shadow from container */
+    overflow: visible;
+    /* Allow content to flow */
 }
 
 .world-display-image {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 3 / 4;
+    /* Vertical Portrait */
     position: relative;
+    background-color: #2c3632;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+    /* Shadow on image only */
 }
 
 .world-display-image img {
@@ -776,31 +807,108 @@
     transition: transform 0.8s ease;
 }
 
-.world-display-content {
+/* Tooltip Animation Styles */
+.world-tooltip-container {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 4rem;
-    background: linear-gradient(to top, rgba(57, 71, 63, 0.95), transparent);
-    color: #ffffff;
-    transform: translateY(0);
-    transition: all 0.5s ease;
+    top: 25%;
+    /* Start slightly higher */
+    left: -20px;
+    /* Position just outside the left edge */
+    transform: translateX(-100%);
+    /* Move entirely to the left */
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    /* Center align line with box */
+    justify-content: flex-end;
+    /* Align content to the right (towards image) */
+    pointer-events: none;
+    max-width: 400px;
+    /* Reasonable width for text */
+    width: auto;
+}
+
+.world-tooltip-line {
+    width: 0;
+    height: 1px;
+    background: rgba(119, 83, 10, 0.6);
+    /* Gold/Brown for visibility on white background */
+    margin-right: -5px;
+    /* Connect visually */
+    animation: drawTooltipLine 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    flex-shrink: 0;
+    box-shadow: none;
+    /* Cleaner look */
+}
+
+.world-tooltip-box {
+    background: rgba(255, 255, 255, 0.95);
+    /* Light background for contrast against page/dark tabs */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #39473f;
+    /* Dark text */
+    padding: 2rem;
+    /* Static fixed padding, increased slightly */
+    border-radius: 4px;
+    border: 1px solid rgba(119, 83, 10, 0.2);
+    /* Subtle gold border */
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: fadeInTooltipBox 0.6s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-right: 0;
+    font-size: 0.95rem;
+    /* Increased font size slightly */
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    pointer-events: auto;
+    text-align: right;
+    /* Right align text since it's on the left */
+    width: 350px;
+    /* Fixed wider width */
+}
+
+@keyframes drawTooltipLine {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 80px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInTooltipBox {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .world-display-title {
     font-family: var(--font-serif-stack);
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
+    color: #2d3b33;
+    text-shadow: none;
 }
 
 .world-display-desc {
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    color: #556b62;
+    opacity: 0.9;
     margin-bottom: 2rem;
     max-width: 600px;
-    opacity: 0.9;
 }
 
 .world-display-list {

@@ -11,16 +11,32 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
 
   const menuItems = [
     {
-      title: 'Hotel hakkında',
-      link: '/about'
-    },
-    {
-      title: 'Villalar ve Suitler',
+      title: 'Suitler & Villalar',
       link: '/suits-and-villas'
     },
     {
-      title: 'İletişim',
-      link: '/contact'
+      title: 'Tesisimiz',
+      link: '/facility'
+    },
+    {
+      title: 'HiraNova\'da Yaşam',
+      link: '/life-at-hiranova'
+    },
+    {
+      title: 'Restoran',
+      link: '/restaurant'
+    },
+    {
+      title: 'Konum Avantajları',
+      link: '/location'
+    },
+    {
+      title: 'Galeri',
+      link: '/gallery'
+    },
+    {
+      title: 'Rezervasyon & Bilgi',
+      link: '/contact' // Keeping contact for reservation/info as it's standard unless a specific booking page exists
     }
   ]
 
@@ -34,31 +50,27 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
   }
 
   const handleMenuClick = (link: string) => {
-    handleClose()
+    // Determine strict routing logic
+    handleClose();
     if (link.startsWith('/')) {
-      // If it's a root anchor like /#about
+      // Check if it's an anchor link on the same page or a different page
       if (link.includes('#')) {
         const [path, hash] = link.split('#');
         if (window.location.pathname === path || (path === '/' && window.location.pathname === '')) {
           const element = document.getElementById(hash);
-          if (element) element.scrollIntoView({ behavior: 'smooth' });
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
         } else {
           window.location.href = link;
         }
       } else {
-        // Normal route
+        // Standard navigation
         window.location.href = link;
       }
     } else {
-      // Anchor only
-      const element = document.querySelector(link)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      } else {
-        // Fallback if element not found on current page (e.g. #about on Suits page)
-        // Go to home + hash
-        window.location.href = '/' + link;
-      }
+      // Fallback or external links
+      window.location.href = link;
     }
   }
 
@@ -180,7 +192,7 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
             <div className="mega-menu-main">
               <div className="mega-menu-left">
                 <nav className="mega-menu-nav">
-                  {menuItems.filter(item => item.title !== 'Villalar ve Suitler').map((item, index) => (
+                  {menuItems.map((item, index) => (
                     <a
                       key={index}
                       href={item.link}

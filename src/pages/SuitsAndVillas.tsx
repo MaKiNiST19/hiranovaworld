@@ -13,6 +13,18 @@ const SuitsAndVillas = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault();
+        if (id === 'all') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
     return (
         <div className="suits-page">
             <Header />
@@ -21,22 +33,32 @@ const SuitsAndVillas = () => {
                 {/* Hero Section */}
                 <section className="suits-hero">
                     <div className="suits-container">
-                        <div className="suits-logo-mark">
-                            {/* Optional small logo mark above title if needed */}
+                        <div className="suits-hero-content">
+                            <span className="suits-hero-tag">SUITLER & VİLLALAR</span>
+                            <div className="suits-hero-line"></div>
+                            <h1 className="suits-hero-title">
+                                DOĞANIN KALBİNDE,<br />
+                                <span className="text-italic">HUZURUN MERKEZİNDE.</span>
+                            </h1>
+                            <p className="suits-hero-desc">
+                                Şehrin gürültüsünden uzak, ormanın sessizliğiyle harmanlanmış seçkin bir yaşam.
+                            </p>
                         </div>
-                        <h1 className="suits-hero-title suits-serif-title">
-                            Ormanın İçinde,
-                            <span className="suits-hero-subtitle">Tepede Bir Yaşam.</span>
-                        </h1>
                     </div>
 
                     <div className="suits-hero-image-wrapper">
                         <img
-                            src="/gallery/gallery (1).jpg"
-                            alt="Modern Kitchen Interior"
+                            src="/suitler-villalar.jpg"
+                            alt="Suits and Villas"
                             className="suits-hero-image"
                         />
-                        {/* Fallback to a placeholder if specific image not found, using a generic class mostly */}
+
+                        {/* Mini Filter Menu */}
+                        <div className="suits-filter-menu">
+                            <a href="#all" onClick={(e) => handleAnchorClick(e, 'all')} className="suits-filter-item active">TÜMÜ</a>
+                            <a href="#suits" onClick={(e) => handleAnchorClick(e, 'suits')} className="suits-filter-item">SUİTLER</a>
+                            <a href="#villas" onClick={(e) => handleAnchorClick(e, 'villas')} className="suits-filter-item">VİLLALAR</a>
+                        </div>
                     </div>
                 </section>
 
@@ -59,7 +81,7 @@ const SuitsAndVillas = () => {
                 </section>
 
                 {/* Section 1: Dark Green - Living Spaces */}
-                <section className="suits-section bg-dark-green">
+                <section id="suits" className="suits-section bg-dark-green">
                     <div className="suits-container">
                         <div className="suits-feature">
                             <div className="suits-feature-image">
@@ -113,7 +135,7 @@ const SuitsAndVillas = () => {
                 </section>
 
                 {/* Section 3: Terracotta - Primary Bedroom */}
-                <section className="suits-section bg-terracotta">
+                <section id="villas" className="suits-section bg-terracotta">
                     <div className="suits-container">
                         <div className="suits-feature">
                             <div className="suits-feature-image">

@@ -1,0 +1,26 @@
+.location-page {
+    background-color: #f8f5eb;
+    color: #39473f;
+    min-height: 100vh;
+}
+
+.location-page .hero-section {
+    height: 60vh;
+    background-color: #2F4F4F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.location-page .hero-content h1 {
+    font-family: var(--font-serif-stack);
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.location-page .content-section {
+    padding: 4rem 0;
+    text-align: center;
+}

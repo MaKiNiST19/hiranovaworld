@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import Header from '../components/Header'
 import './Home.css'
@@ -20,39 +21,39 @@ const Home = () => {
 
     const worldTabs = [
         {
-            label: "Bedenin ve zihnin ritmi.",
+            label: "DOĞANIN KALBİNDE ADRENALİN VE ÖZGÜRLÜK",
             title: "",
-            description: "HiraNova’da sağlık bir ayrıcalık değil, yaşamın doğal bir parçasıdır. Temiz hava, açık alanlar ve doğayla temas eden bir yaşam düzeni, bedeni yormadan güçlendiren, zihni sakinleştiren bir denge sunar.",
+            description: "HiraNova'nın eşsiz doğal parkurlarında ATV ile sınırları zorlayın ya da asil atlarımızın sırtında yemyeşil ormanların derinliklerine doğru unutulmaz bir yolculuğa çıkın. Her anı macera dolu, her nefesi özgürlük kokan bu deneyimler, ruhunuzu yeniden canlandıracak ve doğayla aranızdaki bağı güçlendirecektir. Burada, keşfetmenin ve hissetmenin en saf hali sizi bekliyor.",
             items: [],
-            image: "/spor-alani.jpg"
+            image: "/doganin-kalbinde-adrenalin-ve-ozgurluk.jpeg"
         },
         {
-            label: "Yapmacık olmayan bir doğa.",
+            label: "MİNİK KAŞİFLER İÇİN SINIRSIZ EĞLENCE VE GÜVEN",
             title: "",
-            description: "HiraNova, doğanın içine eklenmiş bir proje değil, doğayla birlikte tasarlanmış bir yaşam alanıdır. Açık peyzaj planı, alçak bitki dokusu ve ferah yerleşim sayesinde güneş, rüzgâr ve manzara yaşamın içinde kalır. Burada doğa bir dekor değil, gündelik hayatın parçasıdır.",
+            description: "HiraNova, çocuklarınızın hayal güçlerini özgürce keşfedebilecekleri, güvenli ve ilham verici bir dünya sunar. Özel olarak tasarlanmış oyun alanlarımızda kahkahalarla dolu anlar yaşarken, ebeveynler de gönül rahatlığıyla dinlenebilir. Doğayla iç içe, eğitici ve eğlenceli aktivitelerle dolu bu ortamda, çocuklarınız hem öğrenecek hem de unutulmaz anılar biriktirecek. Geleceğin kaşifleri burada büyüyor.",
             items: [],
-            image: "/ferah-ortam.jpg"
+            image: "/minik-kasifler-icin-sinirsiz-elglence-ve-guven.png"
         },
         {
-            label: "Sessizlik bir lüks olduğunda.",
+            label: "GECELERİNİZE KEYİF KATAN EĞLENCE DOLU ANLAR",
             title: "",
-            description: "HiraNova’da günler acele etmez. Kalabalık yok, gürültü yok, zorunlu tempo yok. Açık hava sinema terası, sakin yürüyüş alanları ve doğayla çevrili sosyal alanlar, insanın kendini dinleyebileceği bir ortam yaratır. Burası kaçmak için değil, durabilmek için tasarlandı.",
+            description: "HiraNova'da akşamlar, yıldızların altında büyülü bir atmosfere dönüşür. Açık hava sinemasında klasik filmlerin keyfini çıkarın ya da canlı müzik performanslarıyla ruhunuzu dinlendirin. Özel temalı partiler ve kültürel etkinliklerle dolu geceler, sevdiklerinizle birlikte unutulmaz anılar biriktirmeniz için tasarlandı. Burada her gece, sanatın ve eğlencenin eşsiz birleşimiyle taçlanır.",
             items: [],
-            image: "/sinema-ortami.jpg"
+            image: "/gecelerinize-keyif-katan-eglence-dolu-anlar.png"
         },
         {
-            label: "Rahat hissetmenin temeli.",
+            label: "SAKİNLİĞİN VE DOĞALLIĞIN KUCAKLAYICI DOKUNUŞU",
             title: "",
-            description: "HiraNova, kontrollü giriş sistemi ve düzenli yaşam kurgusuyla aileler için güvenli bir ortam sunar. Çocuklar özgürce oynarken, ebeveynler gözleri arkada kalmadan günü yaşar. Güven burada görünmez ama hissedilir.",
+            description: "HiraNova'da yaşam, doğanın sunduğu eşsiz sakinlikle iç içedir. Tavus kuşlarının zarif yürüyüşleri, koyunların huzurlu otlayışları ve atların asil duruşlarıyla çevrili bir ortamda, hayvanlarla kuracağınız samimi bağlar ruhunuzu besleyecek. Şehrin gürültüsünden uzakta, toprağın kokusunu içinize çekerek, doğanın ritmiyle yeniden denge bulun. Burada her an, huzurun ve yenilenmenin bir parçasıdır.",
             items: [],
-            image: "/cocuk-parki.jpg"
+            image: "/sakinligin-ve-dogalligin-kucaklayici-dokunusu.png"
         },
         {
-            label: "Paylaşılan anlarda saklı.",
+            label: "ZİHNİNİZİ VE BEDENİNİZİ ŞIMARTAN BİR DENEYİM",
             title: "",
-            description: "Mutluluk büyük vaatlerde değil, küçük anlarda ortaya çıkar. Ailece yapılan kahvaltılar, birlikte izlenen bir film, doğada geçirilen sade bir gün… HiraNova, bu anların çoğalabileceği bir yaşam düzeni sunar.",
+            description: "HiraNova'nın huzurlu atmosferinde, spa ve fitness merkezimizde kendinize özel bir kaçış yaratın. Uzman terapistler eşliğinde rahatlatıcı masajlarla tüm yorgunluğunuzu atın ya da modern ekipmanlarla donatılmış fitness salonumuzda enerjinizi tazeleyin. Bedeninizin ve zihninizin ihtiyaç duyduğu dengeyi bulacağınız bu özel alanda, kendinizi yeniden keşfedin ve tam anlamıyla yenilenin. Sağlıklı bir yaşamın kapıları burada aralanıyor.",
             items: [],
-            image: "/gallery-4.png"
+            image: "/zihninizi-ve-bedeninizi-simartan-bir-deneyim.jpeg"
         }
     ];
 
@@ -144,8 +145,9 @@ const Home = () => {
                     loop
                     muted
                     playsInline
+                    poster="/slidermax-poster.jpg"
                 >
-                    <source src="/herovideo.mp4" type="video/mp4" />
+                    <source src="/slidermax-optimized.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                 <div className="hero-overlay"></div>
@@ -210,6 +212,12 @@ const Home = () => {
                             özel bir yaşam dünyası.
                         </p>
 
+                        <div className="info-btn-container" style={{ marginTop: '2rem' }}>
+                            <Link to="/facility" className="gold-button" style={{ display: 'inline-block', textDecoration: 'none' }}>
+                                TESİSİMİZ
+                            </Link>
+                        </div>
+
                         <div className="info-buttons">
                             {features.map((feature, index) => (
                                 <button
@@ -242,7 +250,9 @@ const Home = () => {
                             HiraNova villalarında her detay, günü yavaşlatan bir konfor için tasarlandı. Şık ve işlevsel mutfaklar, uzun günlerin yorgunluğunu alan spa hissindeki banyolar, iç mekânla dış mekânı birbirine bağlayan teraslar…
                             Burası yalnızca konaklayacağınız bir yer değil, kendinizi en çok evinizde hissettiğiniz alan.
                         </p>
-                        <button className="residence-button"></button>
+                        <Link to="/suits-and-villas">
+                            <button className="residence-button"></button>
+                        </Link>
                     </div>
                     <div className="residence-image">
                         <img src="/gallery-2.png" alt="Residence" />
@@ -265,7 +275,9 @@ const Home = () => {
                                 Sağlık, doğallık, huzur, güven ve mutluluk üzerine kurulu bütüncül bir yaşam anlayışı önerir. Her detay; bedeni, zihni ve gündelik yaşamı
                                 daha dengeli ve nitelikli hale getirmek için tasarlandı.
                             </p>
-                            <button className="world-discover-btn"></button>
+                            <Link to="/life-at-hiranova">
+                                <button className="world-discover-btn">Hira Nova'da Yaşam</button>
+                            </Link>
                         </div>
                     </div>
 
@@ -286,15 +298,13 @@ const Home = () => {
                         <div className="world-display">
                             <div className="world-display-image">
                                 <img src={worldTabs[activeWorldTab].image} alt={worldTabs[activeWorldTab].label} />
-                                <div className="world-display-content">
-                                    <h3 className="world-display-title">{worldTabs[activeWorldTab].title}</h3>
-                                    <p className="world-display-desc">{worldTabs[activeWorldTab].description}</p>
-                                    <ul className="world-display-list">
-                                        {worldTabs[activeWorldTab].items.map((item, i) => (
-                                            <li key={i}>{item}</li>
-                                        ))}
-                                    </ul>
+                            </div>
+
+                            <div className="world-tooltip-container" key={activeWorldTab}>
+                                <div className="world-tooltip-box">
+                                    <p>{worldTabs[activeWorldTab].description}</p>
                                 </div>
+                                <div className="world-tooltip-line"></div>
                             </div>
                         </div>
                     </div>

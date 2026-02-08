@@ -1,0 +1,26 @@
+.restaurant-page {
+    background-color: #f8f5eb;
+    color: #39473f;
+    min-height: 100vh;
+}
+
+.restaurant-page .hero-section {
+    height: 60vh;
+    background-color: #3e3b33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cca45a;
+    text-align: center;
+}
+
+.restaurant-page .hero-content h1 {
+    font-family: var(--font-serif-stack);
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.restaurant-page .content-section {
+    padding: 4rem 0;
+    text-align: center;
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useImperativeHandle, forwardRef } from 'react'
+import { Link } from 'react-router-dom'
 import './MegaMenu.css'
 
 export interface MegaMenuRef {
@@ -10,34 +11,13 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
   const [isClosing, setIsClosing] = useState(false)
 
   const menuItems = [
-    {
-      title: 'Suitler & Villalar',
-      link: '/suits-and-villas'
-    },
-    {
-      title: 'Tesisimiz',
-      link: '/facility'
-    },
-    {
-      title: 'HiraNova\'da Yaşam',
-      link: '/life-at-hiranova'
-    },
-    {
-      title: 'Restoran',
-      link: '/restaurant'
-    },
-    {
-      title: 'Konum Avantajları',
-      link: '/location'
-    },
-    {
-      title: 'Galeri',
-      link: '/gallery'
-    },
-    {
-      title: 'Rezervasyon & Bilgi',
-      link: '/contact' // Keeping contact for reservation/info as it's standard unless a specific booking page exists
-    }
+    { title: 'SUİTLER & VİLLALAR', link: '/suits-and-villas' },
+    { title: 'TESİSİMİZ', link: '/facility' },
+    { title: "HİRANOVA'DA YAŞAM", link: '/life-at-hiranova' },
+    { title: 'RESTORAN', link: '/restaurant' },
+    { title: 'KONUM AVANTAJLARI', link: '/location' },
+    { title: 'GALERİ', link: '/gallery' },
+    { title: 'İLETİŞİM', link: '/contact' }
   ]
 
   const handleClose = () => {
@@ -46,115 +26,22 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
     setTimeout(() => {
       setIsOpen(false)
       setIsClosing(false)
-    }, 450)
+    }, 600) // Matches CSS transition
   }
 
   const handleMenuClick = (link: string) => {
-    // Determine strict routing logic
     handleClose();
-    if (link.startsWith('/')) {
-      // Check if it's an anchor link on the same page or a different page
-      if (link.includes('#')) {
-        const [path, hash] = link.split('#');
-        if (window.location.pathname === path || (path === '/' && window.location.pathname === '')) {
-          const element = document.getElementById(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        } else {
-          window.location.href = link;
-        }
-      } else {
-        // Standard navigation
-        window.location.href = link;
-      }
-    } else {
-      // Fallback or external links
-      window.location.href = link;
-    }
+    // Use window.location as standard or if using react-router properly, just navigate
+    // Given the current project structure, window.location.href is safest for full page reload triggers if needed
+    window.location.href = link;
   }
 
-  // Mega menü açıkken scroll'u engelle ve body'ye class ekle
-  useEffect(() => {
-    if (isOpen) {
-      // Body scroll'u engelle
-      document.body.style.overflow = 'hidden'
-      document.documentElement.style.overflow = 'hidden'
-      document.body.classList.add('mega-menu-open')
-
-      // Lenis scroll'unu engelle
-      const lenisInstance = (window as any).lenis
-      if (lenisInstance) {
-        lenisInstance.stop()
-      }
-
-      // Header yüksekliğini hesapla ve mega menü için top değerini ayarla
-      const header = document.querySelector('.header')
-      if (header) {
-        const headerHeight = header.getBoundingClientRect().height
-        const overlay = document.querySelector('.mega-menu-overlay') as HTMLElement
-        const content = document.querySelector('.mega-menu-content') as HTMLElement
-        if (overlay) overlay.style.top = `${headerHeight}px`
-        if (content) content.style.top = `${headerHeight}px`
-      }
-    } else {
-      // Scroll'u tekrar aktif et
-      document.body.style.overflow = ''
-      document.documentElement.style.overflow = ''
-      document.body.classList.remove('mega-menu-open')
-
-      // Lenis scroll'unu tekrar aktif et
-      const lenisInstance = (window as any).lenis
-      if (lenisInstance) {
-        lenisInstance.start()
-      }
-    }
-
-    return () => {
-      document.body.style.overflow = ''
-      document.documentElement.style.overflow = ''
-      document.body.classList.remove('mega-menu-open')
-
-      // Cleanup: Lenis'i tekrar aktif et
-      const lenisInstance = (window as any).lenis
-      if (lenisInstance) {
-        lenisInstance.start()
-      }
-    }
-  }, [isOpen])
-
-  // Header sticky durumunda mega menü pozisyonunu güncelle
-  useEffect(() => {
-    const updateMenuPosition = () => {
-      if (isOpen) {
-        const header = document.querySelector('.header')
-        if (header) {
-          const headerHeight = header.getBoundingClientRect().height
-          const overlay = document.querySelector('.mega-menu-overlay') as HTMLElement
-          const content = document.querySelector('.mega-menu-content') as HTMLElement
-          if (overlay) overlay.style.top = `${headerHeight}px`
-          if (content) content.style.top = `${headerHeight}px`
-        }
-      }
-    }
-
-    window.addEventListener('scroll', updateMenuPosition)
-    window.addEventListener('resize', updateMenuPosition)
-
-    return () => {
-      window.removeEventListener('scroll', updateMenuPosition)
-      window.removeEventListener('resize', updateMenuPosition)
-    }
-  }, [isOpen])
-
-  // Ref ile dışarıdan close fonksiyonunu expose et
   useImperativeHandle(ref, () => ({
     close: handleClose
   }))
 
   const toggleMenu = () => {
-    if (isClosing) return // Animasyon sırasında etkileşimi engelle
-
+    if (isClosing) return
     if (isOpen) {
       handleClose()
     } else {
@@ -162,73 +49,105 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
     }
   }
 
-  return (
-    <div className="mega-menu" onClick={toggleMenu} style={{ cursor: 'pointer' }}>
-      <div className={`mega-menu-toggle-wrapper ${isOpen ? 'active' : ''}`}>
-        <div className={`toggle toggle2 ${isOpen ? 'active' : ''}`}>
-          <div id="bar4" className="bars"></div>
-          <div id="bar5" className="bars"></div>
-          <div id="bar6" className="bars"></div>
-        </div>
-      </div>
-      <span className="menu-button_text">{isOpen ? 'KAPAT' : 'MENÜ'}</span>
+  // Handle ESC key to close
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        handleClose()
+      }
+    }
+    window.addEventListener('keydown', handleEsc)
+    return () => window.removeEventListener('keydown', handleEsc)
+  }, [isOpen])
 
+  // Prevent background scroll
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+      document.body.classList.add('mega-menu-open')
+    } else {
+      document.body.style.overflow = ''
+      document.body.classList.remove('mega-menu-open')
+    }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.classList.remove('mega-menu-open')
+    }
+  }, [isOpen])
+
+  return (
+    <div className="mega-menu-wrapper">
+      {/* Trigger Button */}
+      <div className="menu-trigger" onClick={toggleMenu}>
+        <div className={`hamburger-icon ${isOpen ? 'active' : ''}`}>
+          <span></span>
+          <span></span>
+        </div>
+        <span className="menu-trigger-text">{isOpen ? 'KAPAT' : 'MENÜ'}</span>
+      </div>
+
+      {/* Menu Content Overlay */}
       {isOpen && (
-        <>
-          <div
-            className={`mega-menu-overlay ${isClosing ? 'closing' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation()
-              handleClose()
-            }}
-          ></div>
-          <div
-            className={`mega-menu-content ${isClosing ? 'closing' : ''}`}
-            onClick={(e) => {
-              // Mega menu content'e tıklanınca kapanmasın, sadece overlay'e tıklanınca kapansın
-              e.stopPropagation()
-            }}
-          >
-            <div className="mega-menu-main">
-              <div className="mega-menu-left">
-                <nav className="mega-menu-nav">
+        <div className={`mega-menu-overlay ${isClosing ? 'closing' : ''}`} onClick={handleClose}>
+          <div className="mega-menu-container" onClick={(e) => e.stopPropagation()}>
+
+            {/* Top Bar: Close Button */}
+            <div className="mega-menu-top">
+              <button className="mega-menu-close" onClick={handleClose}>
+                <div className="close-circle">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L13 13M1 13L13 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <span>CLOSE</span>
+              </button>
+            </div>
+
+            <div className="mega-menu-main-content">
+              {/* Left Column: Navigation & Info */}
+              <div className="mega-menu-left-col">
+                <nav className="mega-menu-navigation">
                   {menuItems.map((item, index) => (
-                    <a
-                      key={index}
-                      href={item.link}
-                      className="mega-menu-item"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        handleMenuClick(item.link)
-                      }}
-                    >
-                      {item.title}
-                    </a>
+                    <div key={index} className="mega-menu-link-wrapper">
+                      <a
+                        href={item.link}
+                        className="mega-menu-link"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleMenuClick(item.link);
+                        }}
+                      >
+                        {item.title}
+                      </a>
+                    </div>
                   ))}
                 </nav>
+
+                <div className="mega-menu-contact-info">
+                  <div className="contact-block">
+                    <p>URLA / GÜZELBAHÇE</p>
+                    <p>İZMİR, TÜRKİYE</p>
+                  </div>
+                  <div className="contact-block">
+                    <p>T: +90 (232) 000 00 00</p>
+                    <p>E: INFO@HIRANOVAWORLD.COM</p>
+                  </div>
+                  <div className="mega-menu-socials">
+                    <a href="#" className="social-icon">INSTAGRAM</a>
+                    <a href="#" className="social-icon">FACEBOOK</a>
+                  </div>
+                </div>
               </div>
-              <div className="mega-menu-right">
-                <div className="mega-menu-image">
-                  {/* Button removed as requested */}
+
+              {/* Right Column: Featured Image */}
+              <div className="mega-menu-right-col">
+                <div className="featured-image-container">
+                  <img src="/suit-yatak-odasi.jpg" alt="Featured Interior" className="mega-menu-featured-img" />
                 </div>
               </div>
             </div>
-            <div className="mega-menu-footer">
-              <div className="contact-item">
-                <span>PHONE</span>
-                <span>+90 (232) 000 00 00</span>
-              </div>
-              <div className="contact-item">
-                <span>EMAIL</span>
-                <span>info@hiranovaworld.com</span>
-              </div>
-              <div className="contact-item">
-                <span>SOCIALS</span>
-                <span>FACEBOOK / INSTAGRAM / WHATSAPP</span>
-              </div>
-            </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   )

@@ -14,7 +14,6 @@ interface LocationItem {
 
 interface LocationCategory {
     id: string;
-    icon: string;
     title: string;
     items: LocationItem[];
 }
@@ -22,7 +21,6 @@ interface LocationCategory {
 const locationCategories: LocationCategory[] = [
     {
         id: 'beaches',
-        icon: '🏖️',
         title: 'PLAJLAR & SAHİLLER',
         items: [
             { name: 'Menteş Sahili', distance: '27 km' },
@@ -33,7 +31,6 @@ const locationCategories: LocationCategory[] = [
     },
     {
         id: 'culture',
-        icon: '🏛️',
         title: 'KÜLTÜR & TARİH',
         items: [
             { name: 'Karantina Adası', distance: '12 km' },
@@ -44,7 +41,6 @@ const locationCategories: LocationCategory[] = [
     },
     {
         id: 'gastronomy',
-        icon: '🍷',
         title: 'GASTRONOMİ & BAĞLAR',
         items: [
             { name: 'Urla Bağ Yolu', distance: '3 km' },
@@ -55,7 +51,6 @@ const locationCategories: LocationCategory[] = [
     },
     {
         id: 'health',
-        icon: '🏥',
         title: 'SAĞLIK & HİZMETLER',
         items: [
             { name: 'Urla Devlet Hastanesi', distance: '6 km' },
@@ -65,7 +60,6 @@ const locationCategories: LocationCategory[] = [
     },
     {
         id: 'transport',
-        icon: '✈️',
         title: 'ULAŞIM',
         items: [
             { name: 'İzmir Adnan Menderes Havalimanı', distance: '45 km' },
@@ -120,7 +114,6 @@ const Location = () => {
                                         className={`neighborhood-category-btn ${activeCategory === category.id ? 'active' : ''}`}
                                         onClick={() => setActiveCategory(category.id)}
                                     >
-                                        <span className="category-icon">{category.icon}</span>
                                         <span className="category-title">{category.title}</span>
                                         <span className="category-toggle">
                                             {activeCategory === category.id ? '−' : '+'}

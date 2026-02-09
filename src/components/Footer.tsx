@@ -3,12 +3,14 @@ import './Footer.css'
 import { Link } from 'react-router-dom'
 
 const Footer: React.FC = () => {
-    // Main navigation links styled like the example
+    // Main navigation links - synced with MegaMenu
     const navigationLinks = [
-        { label: 'ANASAYFA', href: '/' },
-        { label: 'SUİTLER & VİLLALAR', href: '/suits' },
-        { label: 'OTEL HAKKINDA', href: '/about' },
-        { label: 'ULAŞIM & ÇEVRE', href: '/location' },
+        { label: 'SUİTLER & VİLLALAR', href: '/suits-and-villas' },
+        { label: 'TESİSİMİZ', href: '/facility' },
+        { label: "HİRANOVA'DA YAŞAM", href: '/life-at-hiranova' },
+        { label: 'RESTORAN', href: '/restaurant' },
+        { label: 'KONUM AVANTAJLARI', href: '/location' },
+        { label: 'GALERİ', href: '/gallery' },
         { label: 'İLETİŞİM', href: '/contact' },
     ]
 

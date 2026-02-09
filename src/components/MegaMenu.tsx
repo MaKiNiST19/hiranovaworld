@@ -99,7 +99,7 @@ const MegaMenu = forwardRef<MegaMenuRef>((_, ref) => {
                     <path d="M1 1L13 13M1 13L13 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                 </div>
-                <span>CLOSE</span>
+                <span>KAPAT</span>
               </button>
             </div>
 

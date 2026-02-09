@@ -72,7 +72,8 @@ body {
   color: var(--white);
   /* Changed from var(--text-dark) for better readability on dark bg */
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
+  /* Changed from hidden to clip - allows sticky to work */
   background-color: #000;
   background-image: url('/web-site-bg.jpg');
   background-attachment: fixed;

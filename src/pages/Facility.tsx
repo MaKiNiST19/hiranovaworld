@@ -1,12 +1,11 @@
 import { useRef, useEffect, MouseEvent } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { useSmoothScroll } from '../hooks/useSmoothScroll'
 import './Suits.css'
 import '../App.css'
 
 const Facility = () => {
-    useSmoothScroll()
+    // Note: useSmoothScroll (Lenis) disabled on this page to allow sticky horizontal scroll to work
     // Sticky Horizontal Scroll Component
     const StickyHorizontalSection = () => {
         const containerRef = useRef<HTMLDivElement>(null);
@@ -18,14 +17,11 @@ const Facility = () => {
             const calculateDimensions = () => {
                 if (!containerRef.current || !trackRef.current) return;
 
-                // Calculate total scrollable width
-                const scrollWidth = trackRef.current.scrollWidth;
-                const windowWidth = window.innerWidth;
-                const scrollAmount = scrollWidth - windowWidth;
-
-                // Set container height to allow for full horizontal scroll
-                // Make it taller so scroll feels natural (e.g. 3x width or 1:1 pixel mapping)
-                containerRef.current.style.height = `${scrollWidth}px`;
+                // User requested ~300vh of scroll duration
+                // We set the container height to 400vh. 
+                // This leaves 300vh of "scrollable" distance (height - viewport).
+                const scrollDistance = window.innerHeight * 3;
+                containerRef.current.style.height = `${window.innerHeight + scrollDistance}px`;
             };
 
             const handleScroll = () => {
@@ -35,18 +31,20 @@ const Facility = () => {
                 const scrollY = window.scrollY;
                 const windowHeight = window.innerHeight;
 
-                // Calculate scroll progress within the container
-                // Start scrolling when container top hits viewport top (sticky behavior)
+                // The scrollable distance is the container height minus the viewport height
                 const startScroll = containerTop;
                 const endScroll = startScroll + (containerRef.current.offsetHeight - windowHeight);
 
                 if (scrollY >= startScroll && scrollY <= endScroll) {
-                    // We are inside the scroll zone
+                    // Inside the scroll zone
                     const totalScrollDistance = endScroll - startScroll;
                     const currentScroll = scrollY - startScroll;
                     const progress = currentScroll / totalScrollDistance;
 
+                    // Calculate how much horizontal distance we need to cover
                     const trackScrollWidth = trackRef.current.scrollWidth - window.innerWidth;
+
+                    // Map the 0-1 progress to the total horizontal distance
                     const translateX = progress * trackScrollWidth;
 
                     trackRef.current.style.transform = `translateX(-${translateX}px)`;
@@ -65,6 +63,8 @@ const Facility = () => {
 
             // Initial calculation
             calculateDimensions();
+            // Recalculate if images load late affecting scrollWidth (optional but good safety)
+            setTimeout(calculateDimensions, 500);
 
             window.addEventListener('scroll', handleScroll, { passive: true });
             window.addEventListener('resize', calculateDimensions);
@@ -75,112 +75,165 @@ const Facility = () => {
             };
         }, []);
 
+        // Slider autoplay effect - 3 second interval
+        useEffect(() => {
+            const slides = document.querySelectorAll('.services-slide');
+            if (slides.length === 0) return;
+
+            let currentIndex = 0;
+
+            const interval = setInterval(() => {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }, 3000);
+
+            return () => clearInterval(interval);
+        }, []);
+
         return (
             <section className="horizontal-section-container" ref={containerRef} id="location-surroundings">
                 <div className="horizontal-scroll-wrapper" ref={stickyRef}>
                     <div className="horizontal-scroll-track" ref={trackRef} style={{ gap: '0' }}>
 
-                        {/* PILLAR 1: KONUM VE ÇEVRE */}
+                        {/* PILLAR 1: KONUM VE ÇEVRE - Reference Image Style */}
                         <div className="h-panel-intro">
+                            {/* Decorative leaf background */}
+                            <div className="intro-leaf-bg"></div>
+
                             <h2 className="h-intro-title">
                                 KONUM<br />VE ÇEVRE
                             </h2>
+
+                            {/* 2x2 Icon Grid in center */}
+                            <div className="h-intro-icons">
+                                <div className="h-icon-item">
+                                    <img src="/pin.svg" alt="Konum" />
+                                    <h4>Stratejik Konum</h4>
+                                    <p>Plajlara, şehir merkezine ve temel noktalara yakın, planlı bir konum.</p>
+                                </div>
+                                <div className="h-icon-item">
+                                    <img src="/tarih.svg" alt="Tarih" />
+                                    <h4>Tarihi Doku</h4>
+                                    <p>Urla–Güzelbahçe hattının köklü geçmişiyle çevrili bir atmosfer.</p>
+                                </div>
+                                <div className="h-icon-item">
+                                    <img src="/sef.svg" alt="Gastronomi" />
+                                    <h4>Gastronomik Avantaj</h4>
+                                    <p>Yerel lezzetler ve keşfe açık rotalarla zengin bir çevre.</p>
+                                </div>
+                                <div className="h-icon-item">
+                                    <img src="/saglik.svg" alt="Sağlık" />
+                                    <h4>Sağlık</h4>
+                                    <p>Sağlık hizmetlerine yakın, kolay ulaşılabilir bir yerleşim.</p>
+                                </div>
+                            </div>
+
                             <div className="h-intro-desc-box">
                                 <p>
-                                    HiraNova, Ege'nin incisi Urla'nın büyüleyici doğasında, huzur ve ayrıcalığın buluştuğu stratejik bir noktadadır. Şehrin karmaşasından uzak, ancak tüm önemli merkezlere kolay erişim.
+                                    HİRANOVA, EGE'NİN İNCİSİ URLA'NIN BÜYÜLEYİCİ DOĞASINDA, HUZUR VE AYRICALIĞIN BULUŞTUĞU BİR NOKTADA KONUMLANMIŞTIR. ŞEHRİN KARMAŞASINDAN UZAK, ANCAK TÜM ÖNEMLİ MERKEZLERE KOLAY ERİŞİM İMKANI SUNAN BU ÖZEL LOKASYON, SİZE HEM DİNGİN BİR YAŞAM HEM DE DİNAMİK BİR KEŞİF VAAT EDER. MENTEŞ SAHİLİ'NİN SERİN SULARINA SADECE BİRKAÇ DAKİKA MESAFEDE YER ALAN TESİSİMİZ, KARANTİNA ADASI'NIN TARİHİ DOKUSUNA VE URLA'NIN HAREKETLİ MERKEZİNE YAKINLIĞIYLA DİKKAT ÇEKER. ÇEVREMİZDEKİ BUTİK ECZANELER, MODERN SAĞLIK KURULUŞLARI VE SEÇKİN RESTORANLAR, HİRANOVA'DA GEÇİRECEĞİNİZ HER ANI EKSİKSİZ KILAR. BURADA, DOĞANIN SUNDUĞU EŞSİZ MANZARALARLA İÇ İÇE, URLA'NIN KÜLTÜREL VE GASTRONOMİK ZENGİNLİKLERİNİ KEŞFETME AYRICALIĞINA SAHİP OLACAKSINIZ.
                                 </p>
                             </div>
-                            <img src="/izmir.jpg" alt="Izmir Location" className="h-intro-image-small" />
+
+                            <img src="/urla.png" alt="Urla Coast" className="h-intro-image-large" />
                         </div>
 
-                        <div className="h-panel-image">
-                            <img src="/mentes.jpg" alt="Mentes Coast" className="h-large-image" />
-                        </div>
+                        {/* PILLAR 2: AYRICALIKLI HİZMETLER - Dark Green with Slider */}
+                        <div className="h-panel-services">
+                            {/* Decorative leaf background */}
+                            <div className="services-leaf-bg"></div>
 
-                        <div className="h-panel-content">
-                            <h2>STRATEJİK<br />YAŞAM</h2>
-                            <p style={{ marginBottom: '3rem' }}>
-                                Menteş Sahili'ne yürüme mesafesinde, Karantina Adası ve Urla merkezine komşu. Ulaşım kolaylığı ve doğanın kalbi bir arada.
-                            </p>
-                            <div className="location-icon-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                                <div className="location-icon-box">
-                                    <div className="location-icon-wrapper"><img src="/pin.svg" alt="Pin" /></div>
-                                    <h3>Merkezi Konum</h3>
+                            <div className="services-content">
+                                <h2 className="services-title">
+                                    AYRICALIKLI<br />HİZMETLER
+                                </h2>
+                                <p className="services-desc">
+                                    HİRANOVA'DA, MİSAFİRLERİMİZİN KONFORU VE MEMNUNİYETİ EN ÜST ÖNCELİĞİMİZDİR. SEÇKİN YAŞAM KULÜBÜ ANLAYIŞIMIZIN BİR PARÇASI OLARAK, HER DETAYI ÖZENLE DÜŞÜNÜLMÜŞ BİR DİZİ AYRICALIKLI HİZMET SUNUYORUZ. TESİSİMİZ GENELİNDE 7/24 KESİNTİSİZ GÜVENLİK HİZMETİ İLE HUZURLU BİR ORTAM SAĞLARKEN, VİLLALARINIZA VE TESİS İÇİ AKTİVİTE ALANLARINA ULAŞIMINIZI KOLAYLAŞTIRMAK İÇİN ÇEVRE DOSTU ELEKTRİKLİ GOLF ARAÇLARI TAHSİS EDİLMİŞTİR. HER BİR KONAKLAMA BİRİMİNE ÖZEL OTOPARK ALANLARI, ARAÇLARINIZ İÇİN GÜVENLİ VE KOLAY ERİŞİM SUNAR. KİŞİSELLEŞTİRİLMİŞ KARŞILAMA HİZMETİMİZDEN, TESİS İÇİ TEKNİK DESTEK EKİBİMİZE KADAR, HİRANOVA'DA GEÇİRECEĞİNİZ HER ANIN SORUNSUZ VE KEYİFLİ OLMASI İÇİN TİTİZLİKLE ÇALIŞIYORUZ. BURADA, SADECE KONAKLAMAZ, AYNI ZAMANDA BEKLENTİLERİNİZİN ÖTESİNDE BİR HİZMET KALİTESİYLE ŞIMARTILIRSINIZ.
+                                </p>
+
+                                {/* 4x1 Icon Grid */}
+                                <div className="services-icon-grid">
+                                    <div className="services-icon-item">
+                                        <img src="/guvenlik.svg" alt="Güvenlik" />
+                                        <h4>Güvenlik</h4>
+                                        <p>Düzenli ve kontrollü bir konaklama ortamı.</p>
+                                    </div>
+                                    <div className="services-icon-item">
+                                        <img src="/arac.svg" alt="Ulaşım" />
+                                        <h4>Çevre Dostu Ulaşım</h4>
+                                        <p>Tesis içi ulaşımda doğaya duyarlı çözümler.</p>
+                                    </div>
+                                    <div className="services-icon-item">
+                                        <img src="/otopark.svg" alt="Otopark" />
+                                        <h4>Özel Otopark</h4>
+                                        <p>Misafirlere ayrılmış, rahat ve güvenli park alanı.</p>
+                                    </div>
+                                    <div className="services-icon-item">
+                                        <img src="/karsilama.svg" alt="Karşılama" />
+                                        <h4>Kişiselleştirilmiş Karşılama</h4>
+                                        <p>Misafire özel, sade ve özenli bir karşılama deneyimi.</p>
+                                    </div>
                                 </div>
-                                <div className="location-icon-box">
-                                    <div className="location-icon-wrapper"><img src="/tarih.svg" alt="History" /></div>
-                                    <h3>Tarihi Doku</h3>
+                            </div>
+
+                            {/* Image Slider */}
+                            <div className="services-slider">
+                                <button className="slider-arrow slider-prev" onClick={() => {
+                                    const slides = document.querySelectorAll('.services-slide');
+                                    const current = document.querySelector('.services-slide.active');
+                                    if (current && slides.length > 0) {
+                                        current.classList.remove('active');
+                                        const prev = current.previousElementSibling || slides[slides.length - 1];
+                                        prev.classList.add('active');
+                                    }
+                                }}>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </button>
+                                <div className="services-slider-track">
+                                    <img src="/hizmetler-1.jpg" alt="Hizmet 1" className="services-slide active" />
+                                    <img src="/hizmetler-2.jpg" alt="Hizmet 2" className="services-slide" />
+                                    <img src="/hizmetler-3.jpg" alt="Hizmet 3" className="services-slide" />
+                                    <img src="/hizmetler-4.jpg" alt="Hizmet 4" className="services-slide" />
+                                    <img src="/hizmetler-5.jpg" alt="Hizmet 5" className="services-slide" />
+                                    <img src="/hizmetler-6.jpg" alt="Hizmet 6" className="services-slide" />
+                                    <img src="/hizmetler-7.jpg" alt="Hizmet 7" className="services-slide" />
+                                    <img src="/hizmetler-8.jpg" alt="Hizmet 8" className="services-slide" />
+                                    <img src="/hizmetler-9.jpg" alt="Hizmet 9" className="services-slide" />
                                 </div>
+                                <button className="slider-arrow slider-next" onClick={() => {
+                                    const slides = document.querySelectorAll('.services-slide');
+                                    const current = document.querySelector('.services-slide.active');
+                                    if (current && slides.length > 0) {
+                                        current.classList.remove('active');
+                                        const next = current.nextElementSibling?.classList.contains('services-slide') ? current.nextElementSibling : slides[0];
+                                        next.classList.add('active');
+                                    }
+                                }}>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
 
 
-                        {/* PILLAR 2: HUZUR VE DOĞA (Architecture & Nature) */}
-                        <div className="h-panel-intro" style={{ marginLeft: '10vw' }}>
-                            <h2 className="h-intro-title">
-                                DOĞA<br />VE HUZUR
-                            </h2>
-                            <div className="h-intro-desc-box">
-                                <p>
-                                    Yeşilin her tonunu barındıran peyzajımız ve modern mimarimiz ile ruhunuzu dinlendiren bir atmosfer sunuyoruz. Kuş sesleri ve rüzgarın melodisi eşliğinde.
+                        {/* PILLAR 2: TEKNİK DESTEK */}
+                        <div className="h-panel-services" style={{ gridTemplateColumns: '1fr 1fr' }}>
+                            <div className="services-leaf-bg"></div>
+
+                            <div className="services-content">
+                                <h2 className="services-title">
+                                    TEKNİK<br />DESTEK
+                                </h2>
+                                <p className="services-desc">
+                                    HİRANOVA, SADECE BİR KONAKLAMA YERİ DEĞİL, SİZE ÖZEL BİR YAŞAM TARZI SUNAN BİR SEÇKİN YAŞAM KULÜBÜDÜR. SUNDUĞUMUZ YAŞAM PAKETLERİ, FARKLI İHTİYAÇ VE BEKLENTİLERE GÖRE ÖZENLE TASARLANMIŞTIR. İSTER KISA DÖNEMLİ BİR KAÇAMAK, İSTER UZUN DÖNEMLİ BİR YAŞAM DENEYİMİ ARAYIŞINDA OLUN, HİRANOVA'DA SİZE UYGUN BİR SEÇENEK MUTLAKA BULUNUR. KONAKLAMA VE AKTİVİTE KOMBİNASYONLARINDAN OLUŞAN TEMATİK PAKETLERİMİZLE, URLA'NIN DOĞAL GÜZELLİKLERİNİ KEŞFEDEBİLİR, TESİS İÇİ AYRICALIKLI DENEYİMLERİN TADINI ÇIKARABİLİRSİNİZ.
                                 </p>
                             </div>
-                            <img src="/peyzaj-1.png" alt="Nature" className="h-intro-image-small" />
-                        </div>
 
-                        <div className="h-panel-image">
-                            <img src="/peyzaj-2.png" alt="Landscape View" className="h-large-image" />
-                        </div>
-
-                        <div className="h-panel-content">
-                            <h2>MODERN<br />PEYZAJ</h2>
-                            <p style={{ marginBottom: '3rem' }}>
-                                Geniş bahçeler, özel yürüyüş yolları ve doğayla bütünleşen mimari detaylar. Her köşe huzur için tasarlandı.
-                            </p>
-                            <div className="location-icon-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                                <div className="location-icon-box">
-                                    <div className="location-icon-wrapper"><img src="/flower.svg" alt="Nature" /></div>
-                                    <h3>Yeşil Alanlar</h3>
-                                </div>
-                                <div className="location-icon-box">
-                                    <div className="location-icon-wrapper"><img src="/sun.svg" alt="Peace" /></div>
-                                    <h3>Sessiz Ortam</h3>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        {/* PILLAR 3: LEZZET VE GASTRONOMİ */}
-                        <div className="h-panel-intro" style={{ marginLeft: '10vw' }}>
-                            <h2 className="h-intro-title">
-                                LEZZET<br />VE KEŞİF
-                            </h2>
-                            <div className="h-intro-desc-box">
-                                <p>
-                                    Urla'nın ünlü gastronomi rotası üzerinde, yerel lezzetlerin ve dünya mutfağının en seçkin örneklerini deneyimleyin. Bağ yolları ve gurme duraklar sizi bekliyor.
-                                </p>
-                            </div>
-                            <img src="/chef-small.jpg" alt="Gastronomy" className="h-intro-image-small" />
-                        </div>
-
-                        <div className="h-panel-image">
-                            <img src="/restaurant.jpg" alt="Restaurant Atmosphere" className="h-large-image" />
-                        </div>
-
-                        <div className="h-panel-content" style={{ marginRight: '10vw' }}>
-                            <h2>GURME<br />ROTALAR</h2>
-                            <p style={{ marginBottom: '3rem' }}>
-                                Bölgenin en iyi restoranlarına ve şarap bağlarına yakınlık. Damak tadınıza hitap eden eşsiz bir lokasyon avantajı.
-                            </p>
-                            <div className="location-icon-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                                <div className="location-icon-box">
-                                    <div className="location-icon-wrapper"><img src="/sef.svg" alt="Chef" /></div>
-                                    <h3>Gastronomi</h3>
-                                </div>
-                                <div className="location-icon-box">
-                                    <div className="location-icon-wrapper"><img src="/wine.svg" alt="Vineyard" /></div>
-                                    <h3>Bağ Yolları</h3>
-                                </div>
+                            <div className="services-image-single">
+                                <img src="/destek.jpg" alt="Teknik Destek" />
                             </div>
                         </div>
 
@@ -251,9 +304,9 @@ const Facility = () => {
                 {/* Section 1: Overview (#overview) - Updated Clean Reveal Style */}
                 <section id="overview" className="vibrant-intro">
                     <h2 className="reveal-text-large">
-                        HİRANOVA, SADECE BİR KONAKLAMA <br />
-                        DEĞİL, BİR YAŞAM FELSEFESİDİR. <br />
-                        TESİSİMİZ, URLA'NIN BÜYÜLEYİCİ <br />
+                        HİRANOVA, SADECE BİR KONAKLAMA DEĞİL, <br />
+                        BİR YAŞAM FELSEFESİDİR.  TESİSİMİZ, <br />
+                        URLA'NIN BÜYÜLEYİCİ <br />
                         DOĞASINDA YÜKSELİR.
                     </h2>
                     <p className="vibrant-subtext">

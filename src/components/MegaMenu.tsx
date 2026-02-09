@@ -1,5 +1,4 @@
 import { useState, useEffect, useImperativeHandle, forwardRef } from 'react'
-import { Link } from 'react-router-dom'
 import './MegaMenu.css'
 
 export interface MegaMenuRef {

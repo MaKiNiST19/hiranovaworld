@@ -54,8 +54,7 @@ const Gallery = () => {
                         <div className="suits-hero-line"></div>
                         <h1 className="suits-hero-title">
                             ANLARIN ÖTESİNDE,<br />
-                            <span className="text-italic">BİR YAŞAM</span><br />
-                            SANATI
+                            <span className="text-italic">BİR YAŞAM SANATI</span>
                         </h1>
                     </div>
                 </section>

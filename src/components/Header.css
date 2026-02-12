@@ -30,19 +30,15 @@
 }
 
 /* Rezervasyon butonu sticky durumunda aynı kalır */
-.header-sticky .reservation-btn {
-  /* Sticky durumunda stil değişmez */
-}
 
 .header-sticky .phone-link {
   width: 140px;
   height: 40px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
-  background-size: 250%;
-  background-position: left;
-  color: #ffd277;
+  background: #39473f;
+  /* Dark green border to contrast with gold inner */
+  color: #fff;
   position: relative;
   display: flex;
   align-items: center;
@@ -58,15 +54,15 @@
   padding: 0;
   text-shadow: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  font-family: 'Inter', sans-serif;
-  /* Numbers render better in Inter */
+  font-family: var(--font-serif-stack);
+  color: transparent;
+  /* Hide base text `{CONTACT_INFO.phoneDisplay}` to avoid ghosting */
 }
 
 .header-sticky .phone-link::before {
   position: absolute;
   content: "İLETİŞİM";
-  /* Or dynamic number if preferred, but usually button text is better profile */
-  color: #ffd277;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,8 +70,7 @@
   height: 90%;
   border-radius: 8px;
   transition-duration: 1s;
-  background-color: #f8f5eb;
-  /* Matching the sticky header background */
+  background: linear-gradient(135deg, #77530a 0%, #D4AF37 50%, #77530a 100%);
   background-size: 200%;
   z-index: 1;
 }
@@ -246,6 +241,8 @@ body.mega-menu-open .header-sticky .header-logo img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0;
+  color: transparent;
+  /* Hide base text "Rezervasyon Yap" to avoid ghosting */
 }
 
 .reservation-btn::before {
@@ -300,6 +297,8 @@ body.mega-menu-open .header-sticky .header-logo img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0;
+  color: transparent;
+  /* Hide base text "Kurucu Ortaklık" to avoid ghosting */
 }
 
 .founder-partnership-btn::before {
@@ -338,7 +337,8 @@ body.mega-menu-open .header-sticky .header-logo img {
   border: 2px solid transparent;
   border-radius: 10px;
   background: transparent;
-  color: #ffffff;
+  color: transparent;
+  /* Hide base text "Genel Plan" to avoid ghosting */
   position: relative;
   display: flex;
   align-items: center;

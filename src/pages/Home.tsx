@@ -162,13 +162,13 @@ const Home = () => {
                 <div className="info-section-inner">
                     {/* Background Images */}
                     <div className="bg-image image-bottom-left">
-                        <img src="/orman.png" alt="Orman" />
+                        <img src="/orman.png" alt="Orman" decoding="async" />
                     </div>
                     <div className="bg-image image-bottom-left-2">
-                        <img src="/koyun.png" alt="Koyun" />
+                        <img src="/koyun.png" alt="Koyun" decoding="async" />
                     </div>
                     <div className="bg-image image-top-right">
-                        <img src="/yaprak.png" alt="Yaprak" />
+                        <img src="/yaprak.png" alt="Yaprak" decoding="async" />
                     </div>
 
                     <div className="info-content">
@@ -255,13 +255,13 @@ const Home = () => {
                         </Link>
                     </div>
                     <div className="residence-image">
-                        <img src="/gallery-2.png" alt="Residence" />
+                        <img src="/gallery-2.png" alt="Residence" loading="lazy" decoding="async" />
                     </div>
                 </div>
             </section>
 
             {/* World System Section */}
-            <section className="world-section">
+            <section className="world-section" style={{ marginBottom: '6rem' }}>
                 <div className="world-container">
                     <div className="world-header">
                         <span className="world-tag">HIRANOVA WORLD</span>
@@ -284,27 +284,35 @@ const Home = () => {
                     <div className="world-content-grid">
                         <div className="world-tabs">
                             {worldTabs.map((tab, index) => (
-                                <div
-                                    key={index}
-                                    className={`world-tab-item ${activeWorldTab === index ? 'active' : ''}`}
-                                    onClick={() => setActiveWorldTab(index)}
-                                >
-                                    <span className="tab-arrow">→</span>
-                                    <span className="tab-label">{tab.label}</span>
+                                <div key={index} className="world-tab-container">
+                                    <div
+                                        className={`world-tab-item ${activeWorldTab === index ? 'active' : ''}`}
+                                        onClick={() => setActiveWorldTab(index)}
+                                    >
+                                        <span className="tab-arrow">→</span>
+                                        <span className="tab-label">{tab.label}</span>
+                                    </div>
+                                    <motion.div
+                                        initial={false}
+                                        animate={{
+                                            height: activeWorldTab === index ? 'auto' : 0,
+                                            opacity: activeWorldTab === index ? 1 : 0,
+                                            marginTop: activeWorldTab === index ? '1rem' : 0,
+                                            marginBottom: activeWorldTab === index ? '1rem' : 0
+                                        }}
+                                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                                        style={{ overflow: 'hidden' }}
+                                        className="world-tab-description"
+                                    >
+                                        <p>{tab.description}</p>
+                                    </motion.div>
                                 </div>
                             ))}
                         </div>
 
                         <div className="world-display">
                             <div className="world-display-image">
-                                <img src={worldTabs[activeWorldTab].image} alt={worldTabs[activeWorldTab].label} />
-                            </div>
-
-                            <div className="world-tooltip-container" key={activeWorldTab}>
-                                <div className="world-tooltip-box">
-                                    <p>{worldTabs[activeWorldTab].description}</p>
-                                </div>
-                                <div className="world-tooltip-line"></div>
+                                <img src={worldTabs[activeWorldTab].image} alt={worldTabs[activeWorldTab].label} decoding="async" />
                             </div>
                         </div>
                     </div>

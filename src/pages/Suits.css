@@ -59,7 +59,7 @@
 }
 
 .suits-hero-title .text-italic {
-    font-style: italic;
+    font-style: normal;
     color: #C17D5F;
     display: block;
 }
@@ -86,7 +86,8 @@
     bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(47, 62, 53, 0.6);
+    /* Darker background as requested */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 1rem 2rem;
@@ -94,13 +95,12 @@
     display: flex;
     gap: 2rem;
     z-index: 20;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .suits-filter-item {
     font-family: 'Inter', sans-serif;
-    /* Or serif based on preference, Inter fits UI */
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -111,6 +111,11 @@
     cursor: pointer;
     white-space: nowrap;
     opacity: 0.8;
+    /* Reset button styles */
+    background: transparent;
+    border: none;
+    padding: 0;
+    outline: none;
 }
 
 .suits-filter-item:hover,
@@ -460,9 +465,9 @@
     text-transform: uppercase;
     grid-column: 1;
     grid-row: 1 / 2;
-    align-self: end;
+    align-self: start;
     padding-right: 2rem;
-    padding-top: 10vh;
+    padding-top: 4vh;
 }
 
 /* 2x2 Icon Grid - left side, below title */
@@ -526,7 +531,8 @@
     justify-self: stretch;
     padding: 2rem 3rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    overflow-y: auto;
 }
 
 .h-intro-desc-box p {
@@ -1206,5 +1212,110 @@
     .neighborhood-featured {
         order: 1;
         padding: 2rem;
+    }
+}
+
+/* Mobile Adjustments for Horizontal Scroll Panels */
+@media (max-width: 1024px) {
+    .h-panel-intro {
+        display: flex;
+        flex-direction: column;
+        padding: 6rem 2rem 2rem;
+        height: 100vh;
+        width: 100vw;
+        overflow-y: auto;
+        /* Enable vertical scroll within the panel */
+        gap: 2rem;
+    }
+
+    .h-intro-logo {
+        position: static;
+        margin-bottom: 1rem;
+        width: 60px;
+    }
+
+    .h-intro-title {
+        font-size: 2.5rem;
+        padding-top: 0;
+        padding-right: 0;
+        margin-bottom: 1rem;
+        grid-column: auto;
+        grid-row: auto;
+        width: 100%;
+        text-align: left;
+        align-self: flex-start;
+    }
+
+    .h-intro-desc-box {
+        grid-column: auto;
+        grid-row: auto;
+        padding: 0;
+        width: 100%;
+        margin-bottom: 1rem;
+        max-height: none;
+        overflow: visible;
+        display: block;
+        align-self: flex-start;
+    }
+
+    .h-intro-icons {
+        grid-column: auto;
+        grid-row: auto;
+        padding: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        align-self: flex-start;
+    }
+
+    .h-intro-image-large {
+        grid-column: auto;
+        grid-row: auto;
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-top: 1rem;
+        flex-shrink: 0;
+    }
+
+    /* Ensure other panels behave well too */
+    .h-panel-image,
+    .h-panel-content,
+    .h-panel-services {
+        width: 100vw;
+        height: 100vh;
+        padding: 6rem 2rem 2rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .h-panel-content h2 {
+        font-size: 3rem;
+    }
+
+    .h-panel-services {
+        /* Reset grid */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .services-content {
+        padding-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    .services-title {
+        font-size: 2.5rem;
+    }
+
+    .services-icon-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        padding-bottom: 4rem;
+        /* Bottom space */
     }
 }

@@ -78,7 +78,7 @@
 }
 
 .suits-hero-title .text-italic {
-    font-style: italic;
+    font-style: normal;
     color: #C17D5F;
     /* Terracotta accent */
     display: block;

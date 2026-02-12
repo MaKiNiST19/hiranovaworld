@@ -48,10 +48,6 @@
 }
 
 .footer-circle-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +55,8 @@
 }
 
 .footer-circle-logo img {
-    max-width: 50px;
+    max-width: 240px;
+    /* 3 times larger than previous 80px container constraint */
     height: auto;
     filter: brightness(100%);
 }

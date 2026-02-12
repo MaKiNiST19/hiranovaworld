@@ -10,9 +10,8 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      const windowHeight = window.innerHeight
-      // Sticky header after 30vh
-      setIsSticky(scrollY > windowHeight * 0.3)
+      // Sticky header after 100px
+      setIsSticky(scrollY > 100)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })

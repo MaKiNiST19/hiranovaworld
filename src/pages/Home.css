@@ -255,29 +255,7 @@
     display: none;
 }
 
-.gold-button {
-    padding: 0.8rem 1.8rem;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    /* All Inter text uppercase */
-    background: linear-gradient(135deg, #77530a 0%, #D4AF37 50%, #77530a 100%);
-    background-size: 200% auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    white-space: nowrap;
-}
 
-.gold-button:hover {
-    background-position: right center;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-}
 
 /* Modal Styles (Adapted from About.css) */
 .home-modal-overlay {
@@ -587,7 +565,8 @@
 
 /* World System Section */
 .world-section {
-    padding: 10rem 0;
+    padding: 15rem 0 25rem 0;
+    min-height: 100vh;
     background-color: #f8f5eb;
     color: #39473f;
     overflow: visible;
@@ -701,9 +680,8 @@
     grid-template-columns: 1.1fr 0.9fr;
     /* Increased left column width, decreased right */
     gap: 4rem;
-    align-items: start;
-    margin-top: 0;
-    /* Reduced margin */
+    align-items: end;
+    margin-top: 4rem;
 }
 
 .world-tabs {
@@ -717,7 +695,7 @@
 
 .world-tab-item {
     padding: 2rem 0;
-    border-bottom: 1px solid rgba(57, 71, 63, 0.2);
+    border-bottom: 1px solid rgba(57, 71, 63, 0.1);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -753,7 +731,26 @@
     color: #77530a;
     /* Active color */
     padding-left: 2rem;
-    border-bottom: 1px solid #77530a;
+    border-bottom: none;
+}
+
+.world-tab-container {
+    border-bottom: 1px solid rgba(57, 71, 63, 0.1);
+}
+
+.world-tab-description {
+    background: #ffffff;
+    padding: 0 2rem;
+    border-radius: 8px;
+    color: #556b62;
+    font-size: 1rem;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.world-tab-description p {
+    margin: 1.5rem 0;
 }
 
 .world-tab-item.active .tab-label {
@@ -777,8 +774,8 @@
     max-width: 600px;
     /* Adjusted width */
     margin-left: auto;
-    margin-top: -300px;
-    /* Significant negative margin upwards */
+    /* margin-top deleted to allow bottom alignment */
+    margin-top: 0;
     z-index: 10;
     background: transparent;
     /* Transparent bg */
@@ -807,90 +804,14 @@
     transition: transform 0.8s ease;
 }
 
-/* Tooltip Animation Styles */
+/* Tooltip Animation Styles Removed */
 .world-tooltip-container {
-    position: absolute;
-    top: 25%;
-    /* Start slightly higher */
-    left: -20px;
-    /* Position just outside the left edge */
-    transform: translateX(-100%);
-    /* Move entirely to the left */
-    z-index: 30;
-    display: flex;
-    align-items: center;
-    /* Center align line with box */
-    justify-content: flex-end;
-    /* Align content to the right (towards image) */
-    pointer-events: none;
-    max-width: 400px;
-    /* Reasonable width for text */
-    width: auto;
+    display: none;
 }
 
-.world-tooltip-line {
-    width: 0;
-    height: 1px;
-    background: rgba(119, 83, 10, 0.6);
-    /* Gold/Brown for visibility on white background */
-    margin-right: -5px;
-    /* Connect visually */
-    animation: drawTooltipLine 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    flex-shrink: 0;
-    box-shadow: none;
-    /* Cleaner look */
-}
-
-.world-tooltip-box {
-    background: rgba(255, 255, 255, 0.95);
-    /* Light background for contrast against page/dark tabs */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: #39473f;
-    /* Dark text */
-    padding: 2rem;
-    /* Static fixed padding, increased slightly */
-    border-radius: 4px;
-    border: 1px solid rgba(119, 83, 10, 0.2);
-    /* Subtle gold border */
-    opacity: 0;
-    transform: translateX(-10px);
-    animation: fadeInTooltipBox 0.6s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    margin-right: 0;
-    font-size: 0.95rem;
-    /* Increased font size slightly */
-    line-height: 1.6;
-    letter-spacing: 0.02em;
-    pointer-events: auto;
-    text-align: right;
-    /* Right align text since it's on the left */
-    width: 350px;
-    /* Fixed wider width */
-}
-
-@keyframes drawTooltipLine {
-    from {
-        width: 0;
-        opacity: 0;
-    }
-
-    to {
-        width: 80px;
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInTooltipBox {
-    from {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/* Tooltip Animation Styles Removed */
+.world-tooltip-container {
+    display: none;
 }
 
 .world-display-title {

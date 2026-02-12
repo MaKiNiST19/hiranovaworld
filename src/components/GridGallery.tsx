@@ -64,7 +64,7 @@ const GridGallery = () => {
                 <div className="grid-gallery-grid">
                     {images.map((src, index) => (
                         <div key={index} className="grid-gallery-item" onClick={() => openLightbox(index)}>
-                            <img src={src} alt={`Gallery Image ${index + 1}`} loading="lazy" />
+                            <img src={src} alt={`Gallery Image ${index + 1}`} loading="lazy" decoding="async" />
                             <div className="grid-gallery-overlay">
                                 <span>BÜYÜT</span>
                             </div>

@@ -56,17 +56,17 @@ const Contact = () => {
                                 </div>
                             </div>
 
-                            <div className="form-group" style={{ marginBottom: '2rem' }}>
+                            <div className="form-group">
                                 <label className="form-label">E-POSTA ADRESİ*</label>
                                 <input type="email" className="form-input" required />
                             </div>
 
-                            <div className="form-group" style={{ marginBottom: '2rem' }}>
+                            <div className="form-group">
                                 <label className="form-label">TELEFON</label>
                                 <input type="tel" className="form-input" />
                             </div>
 
-                            <div className="form-group form-group-select" style={{ marginBottom: '2rem' }}>
+                            <div className="form-group form-group-select">
                                 <label className="form-label">ÜNİTE TERCİHİ</label>
                                 <select className="form-select">
                                     <option value="">Seçiniz</option>
@@ -75,7 +75,7 @@ const Contact = () => {
                                 </select>
                             </div>
 
-                            <div className="form-group form-group-select" style={{ marginBottom: '2rem' }}>
+                            <div className="form-group form-group-select">
                                 <label className="form-label">FİYAT ARALIĞI</label>
                                 <select className="form-select">
                                     <option value="">Seçiniz</option>
@@ -84,7 +84,7 @@ const Contact = () => {
                                 </select>
                             </div>
 
-                            <div className="form-group form-group-select" style={{ marginBottom: '2rem' }}>
+                            <div className="form-group form-group-select">
                                 <label className="form-label">BİZİ NEREDEN DUYDUNUZ?*</label>
                                 <select className="form-select" required>
                                     <option value="">Seçiniz</option>
@@ -95,7 +95,7 @@ const Contact = () => {
                                 </select>
                             </div>
 
-                            <div className="form-group form-group-select" style={{ marginBottom: '2rem' }}>
+                            <div className="form-group form-group-select">
                                 <label className="form-label">EMLAK DANIŞMANIYIM?</label>
                                 <select className="form-select">
                                     <option value="no">Hayır</option>
@@ -103,18 +103,14 @@ const Contact = () => {
                                 </select>
                             </div>
 
-                            <div className="form-group" style={{ marginBottom: '2rem' }}>
+                            <div className="form-group">
                                 <label className="form-label">MESAJ</label>
-                                <textarea className="form-textarea" rows={4}></textarea>
+                                <textarea className="form-textarea" rows={2}></textarea>
                             </div>
 
-                            <button type="submit" className="submit-btn" style={{ writingMode: 'vertical-rl', float: 'right', padding: '1rem 0.5rem', height: '100px', display: 'none' }}>
-                                {/* The typical side button from the design might be hard to make responsive purely broadly, sticky button style maybe? 
-                                    Let's stick to a normal button for usability first, match color though.
-                                */}
-                            </button>
 
-                            <button type="submit" className="submit-btn" style={{ width: '100%', float: 'none', writingMode: 'horizontal-tb' }}>
+
+                            <button type="submit" className="gold-button" style={{ width: '100%' }}>
                                 GÖNDER
                             </button>
 
